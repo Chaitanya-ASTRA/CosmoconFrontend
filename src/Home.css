@@ -1,0 +1,8 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+body {
+  background-color: #000000; /* deep black behind the transparent canvas */
+}
+
+
