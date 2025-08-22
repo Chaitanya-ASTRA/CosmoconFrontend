@@ -1,8 +1,58 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
-body {
-  background-color: #000000; /* deep black behind the transparent canvas */
+html, body, #root {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  background: black;
 }
+
+
+#root {
+  transform: scale(1.4);  /* zoom 110% */
+  transform-origin: top top; /* adjust anchor point */
+  width: 100vw;
+  height: 100vh;
+}
+.mar{
+  margin-top: 250px;
+}
+* {
+  box-sizing: border-box;
+}
+
+.cosmo-text {
+  color: white;
+  font-weight: 700;
+  opacity: 0;
+  animation: fadeInOut 5s ease-in-out forwards;
+  line-height: 1;
+  font-family: 'Orbitron', sans-serif; /* optional */
+  text-align: center;
+}
+
+/* Main COSMOCON title */
+.cosmo-text {
+  font-size: 10vw; /* huge, fills most of screen width */
+}
+
+/* Smaller year, shifted left */
+.cosmo-text.year {
+  font-size: 6vw;   /* smaller than COSMOCON */
+  align-self: flex-start; /* push left relative to container */
+  margin-left: 10vw; /* control how much left it goes */
+  margin-top: -2vw;  /* bring closer to COSMOCON */
+}
+
+/* Fade-in fade-out animation */
+@keyframes fadeInOut {
+  0% { opacity: 0; }
+  20% { opacity: 1; }
+  80% { opacity: 1; }
+  100% { opacity: 1; }
+}
+
 
 

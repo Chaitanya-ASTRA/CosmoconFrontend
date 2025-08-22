@@ -5,6 +5,13 @@
   text-align: center;
 }
 
+body {
+  font-family: "Fira Code", monospace !important;
+  font-optical-sizing: auto !important;
+  font-style: normal !important;
+
+}
+
 .logo {
   height: 6em;
   padding: 1.5em;
