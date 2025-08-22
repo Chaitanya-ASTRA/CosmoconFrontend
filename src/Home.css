@@ -10,13 +10,17 @@ html, body, #root {
 }
 
 
-#root {
-  transform: scale(1.4);  /* zoom 110% */
-  transform-origin: top top; /* adjust anchor point */
+/* #root {
+  transform: scale(1); 
+  transform-origin: top top; 
   width: 100vw;
   height: 100vh;
-}
-.mar{
+} 
+*/
+
+
+
+.mar{ 
   margin-top: 250px;
 }
 * {
