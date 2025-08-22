@@ -90,7 +90,7 @@ function Info({ active = true }: SectionProps) {
         <div> 
             <section id="about" className={`page min-h-screen flex flex-col items-center justify-center p-8 md:p-16 transition-all duration-500 ease-in-out ${active ? 'active' : ''}`}>
       <div className={`container mx-auto max-w-6xl transition-all duration-700 delay-100 ease-out ${active ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-8'}`}>
-        <h2 className="text-4xl md:text-5xl font-bold text-center mb-12 bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-fuchsia-600">About COSMOCON</h2>
+        <h2 className="text-4xl md:text-5xl font-bold text-center mb-12 text-white">About COSMOCON</h2>
         <div className="flex flex-col lg:flex-row items-center space-y-8 lg:space-y-0 lg:space-x-12">
           <div className="w-full lg:w-1/2 p-6 rounded-3xl bg-white/5 backdrop-blur-sm border border-white/10 shadow-xl">
             <div className="text-white">
