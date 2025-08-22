@@ -27,7 +27,6 @@ function Objectives() {
 
   return (
     <div>
-         <NavBar/>
       <section 
         id="objectives" 
         className={`page flex flex-col items-center justify-center p-8 md:p-16 transition-all duration-500 ease-in-out ${active ? 'active' : ''}`}

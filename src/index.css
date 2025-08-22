@@ -105,6 +105,33 @@ button:focus-visible {
   }
 }
 
+
+/* Apply to the whole page */
+body {
+  scrollbar-width: thin; /* Firefox */
+  scrollbar-color: #fff transparent; /* Firefox */
+}
+
+/* Chrome, Edge, Safari */
+body::-webkit-scrollbar {
+  width: 12px;
+}
+
+body::-webkit-scrollbar-track {
+  background: black; /* track color */
+  border-radius: 10px;
+  background-image: url('https://img.freepik.com/free-vector/3d-metal-star-isolated_1308-117760.jpg?semt=ais_hybrid&w=740&q=80'); /* small star icon */
+  background-repeat: repeat;
+  background-size: 8px 8px;
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: white; /* the draggable part */
+  border-radius: 10px;
+  border: 3px solid black; /* spacing inside track */
+}
+
+
 @theme inline {
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);

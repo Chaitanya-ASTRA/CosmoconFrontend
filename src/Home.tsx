@@ -223,6 +223,8 @@ import Objectives from "./Objectives";
 import Event from "./Events";
 import NavBar from "./NavBar";
 import Gallery from "./Gallery";
+import CountdownTimer from "./CountdownTimer"; // Import the new component
+import { Link } from "react-router-dom"; // Import Link from react-router-dom
 
 function Model() {
   const { scene } = useGLTF("/models/scene.gltf");
@@ -296,31 +298,31 @@ const Home = () => {
           <div className="absolute inset-0 flex flex-col justify-center items-center">
             <h1 className="cosmo-text">COSMOCON</h1>
             <h1 className="cosmo-text year">2025</h1>
+            <CountdownTimer targetDate="2025-08-27T00:00:00" /> {/* Add Countdown Timer here */}
           </div>
           </>
         )}
       </section>
 
-      {/* Normal Full-Screen Sections */}
-      <section className="w-full bg-[#0B0F1A] text-white py-32">
+      <section className="w-full bg-[#0B0F1A] text-white py-10">
   <div className="w-full">
     <Info active={true} />
   </div>
 </section>
 
-<section className="w-full bg-[#0B0F1A] text-white py-32">
+<section className="w-full bg-[#0B0F1A] text-white py-10">
   <div className="w-full">
     <Objectives />
   </div>
 </section>
 
-<section className="w-full bg-[#0B0F1A] text-white py-32">
+<section className="w-full bg-[#0B0F1A] text-white py-10">
   <div className="w-full">
     <Event />
   </div>
 </section>
 
-<section className="w-full bg-[#0B0F1A] text-white py-32">
+<section className="w-full bg-[#0B0F1A] text-white py-10">
   <div className="w-full">
     <Gallery/>
   </div>
