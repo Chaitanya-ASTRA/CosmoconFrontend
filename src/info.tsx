@@ -88,7 +88,6 @@ function HighlightCard({ icon, title, description }: HighlightCardProps): JSX.El
 function Info({ active = true }: SectionProps) {
     return ( 
         <div> 
-            <NavBar/>
             <section id="about" className={`page min-h-screen flex flex-col items-center justify-center p-8 md:p-16 transition-all duration-500 ease-in-out ${active ? 'active' : ''}`}>
       <div className={`container mx-auto max-w-6xl transition-all duration-700 delay-100 ease-out ${active ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-8'}`}>
         <h2 className="text-4xl md:text-5xl font-bold text-center mb-12 text-white">About COSMOCON</h2>

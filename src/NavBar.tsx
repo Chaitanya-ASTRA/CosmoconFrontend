@@ -1,86 +1,49 @@
-import { useState } from "react";
-import { motion } from "framer-motion";
-import { Menu, X } from "lucide-react";
-import { Link } from "react-router-dom";
+// NavBar.tsx
+import React, { useState } from "react";
+import { Menu, X } from "lucide-react"; // icons from lucide-react
 
-const navItems = ["Home", "About","Objectives","Events","Guests","gallery"];
+const NavBar = () => {
+  const [open, setOpen] = useState(false);
 
-export default function NavBar() {
-  const [isOpen, setIsOpen] = useState(false);
+  const toggleMenu = () => setOpen(!open);
 
   return (
-    <motion.nav
-  initial={{ y: -80, opacity: 0 }}
-  animate={{ y: 0, opacity: 1 }}
-  transition={{ duration: 0.8, ease: "easeOut" }}
-  className="fixed top-0 left-0 w-full z-50 backdrop-blur-lg bg-black/30 border-b border-white/10 shadow-lg "
->
+    <nav className="fixed top-[15%] left-[10%] w-80% bg-black/70 backdrop-blur-md text-white z-50">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between h-16">
+          {/* Logo / Title */}
+          <div className="text-2xl font-extrabold tracking-wider">COSMOCON</div>
 
-      <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between hover:custome-bright-glow transition-all duration-300">
-        {/* Logo */}
-        <motion.div
-          whileHover={{ scale: 1.1, rotate: 5 }}
-          className="text-2xl font-extrabold tracking-widest text-white drop-shadow-lg"
-        >
-          COSMOCON
-        </motion.div>
+          {/* Desktop Menu */}
+          <div className="hidden md:flex space-x-8 text-lg">
+            <a href="#home" className="hover:text-blue-400 transition">Home</a>
+            <a href="#about" className="hover:text-blue-400 transition">About</a>
+            <a href="#objectives" className="hover:text-blue-400 transition">Objectives</a>
+            <a href="#events" className="hover:text-blue-400 transition">Events</a>
+            <a href="#gallery" className="hover:text-blue-400 transition">Gallery</a>
+          </div>
 
-        {/* Desktop Menu */}
-        <div className="hidden md:flex space-x-8 pointer-events-auto">
-          {navItems.map((item, idx) => (
-            <motion.a
-              key={idx}
-              whileHover={{ scale: 1.15, textShadow: "0px 0px 8px #60a5fa" }}
-              whileTap={{ scale: 0.9 }}
-              className="text-white text-lg font-semibold cursor-pointer relative"
-            >
-                <Link to={`/${item.toLowerCase()}`} >
-              {item}
-              </Link>
-              <motion.span
-                className="absolute left-0 bottom-[-4px] w-full h-[2px] bg-blue-400 origin-left"
-                initial={{ scaleX: 0 }}
-                whileHover={{ scaleX: 1 }}
-                transition={{ duration: 0.3 }}
-              />
-            </motion.a>
-          ))}
+          {/* Mobile Menu Button */}
+          <div className="md:hidden">
+            <button onClick={toggleMenu}>
+              {open ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            </button>
+          </div>
         </div>
-
-        {/* Mobile Menu Button */}
-        <button
-          className="md:hidden text-white z-50"
-          onClick={() => setIsOpen(!isOpen)}
-        >
-          {isOpen ? <X size={28} /> : <Menu size={28} />}
-        </button>
       </div>
 
-      {/* Mobile Menu */}
-      {isOpen && (
-        <motion.div
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -20 }}
-          className="md:hidden flex flex-col space-y-6 items-center py-6 bg-black/80 backdrop-blur-lg text-white pointer-events-auto"
-        >
-          {navItems.map((item, idx) => (
-            <motion.a
-              key={idx}
-              whileHover={{ scale: 1.2, color: "#60a5fa" }}
-              whileTap={{ scale: 0.9 }}
-              className="text-xl font-semibold"
-              onClick={() => setIsOpen(false)}
-            >
-            <Link to={`/${item.toLowerCase()}`} >
-              {item}
-              </Link>
-            </motion.a>
-          ))}
-        </motion.div>
+      {/* Mobile Dropdown Menu */}
+      {open && (
+        <div className="md:hidden bg-black/90 px-4 py-3 space-y-2">
+          <a href="#home" className="block hover:text-blue-400">Home</a>
+          <a href="#about" className="block hover:text-blue-400">About</a>
+          <a href="#objectives" className="block hover:text-blue-400">Objectives</a>
+          <a href="#events" className="block hover:text-blue-400">Events</a>
+          <a href="#gallery" className="block hover:text-blue-400">Gallery</a>
+        </div>
       )}
-    </motion.nav>
+    </nav>
   );
-}
+};
 
-
+export default NavBar;
