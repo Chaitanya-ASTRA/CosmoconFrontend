@@ -222,6 +222,7 @@ import './Home.css'
 import Objectives from "./Objectives";
 import Event from "./Events";
 import NavBar from "./NavBar";
+import Gallery from "./Gallery";
 
 function Model() {
   const { scene } = useGLTF("/models/scene.gltf");
@@ -238,7 +239,7 @@ function Model() {
       // Stage 2: Small tilt
       ref.current.rotation.x = THREE.MathUtils.lerp(
         ref.current.rotation.x,
-        0.1,
+        0.01,
         0.05
       );
     } else if (elapsed < 4) {
@@ -267,13 +268,13 @@ const Home = () => {
   }, []);
 
   return (
-    <>
-    <div className="sticky">
-    <NavBar/>
-    </div>
-   <div className="w-full pt-16">
+    <div id="home"> {/* Added id="home" for navigation */}
+    {showText && (<NavBar/>) }
+    
+
+   <div className="w-full">
       {/* First Page (Canvas Section) */}
-      <section className="relative h-screen w-full overflow-hidden min-h-screen px-0 mx-0">
+      <section className="relative h-screen w-full overflow-hidden min-h-screen">
         <Canvas
           style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%" }}
           dpr={Math.min(window.devicePixelRatio, 2)}
@@ -285,14 +286,14 @@ const Home = () => {
         >
           <ambientLight intensity={0.5} />
           <directionalLight position={[5, 5, 5]} intensity={1} />
-          <Model />
-          <OrbitControls enablePan={false} />
+    <Model />
+          <OrbitControls enablePan={true} enableZoom={true} enableRotate={true} />
         </Canvas>
 
         {/* Overlay Text */}
         {showText && (
           <>
-          <div className="absolute inset-0 flex flex-col justify-center items-center z-10">
+          <div className="absolute inset-0 flex flex-col justify-center items-center">
             <h1 className="cosmo-text">COSMOCON</h1>
             <h1 className="cosmo-text year">2025</h1>
           </div>
@@ -302,25 +303,31 @@ const Home = () => {
 
       {/* Normal Full-Screen Sections */}
       <section className="w-full bg-[#0B0F1A] text-white py-32">
-  <div className="max-w-6xl mx-auto px-4">
-    <Info />
+  <div className="w-full">
+    <Info active={true} />
   </div>
 </section>
 
-<section className="w-full bg-blue-800 text-white py-32">
-  <div className="max-w-6xl mx-auto px-4">
+<section className="w-full bg-[#0B0F1A] text-white py-32">
+  <div className="w-full">
     <Objectives />
   </div>
 </section>
 
-<section className="w-full bg-purple-700 text-white py-32">
-  <div className="max-w-6xl mx-auto px-4">
+<section className="w-full bg-[#0B0F1A] text-white py-32">
+  <div className="w-full">
     <Event />
   </div>
 </section>
 
+<section className="w-full bg-[#0B0F1A] text-white py-32">
+  <div className="w-full">
+    <Gallery/>
+  </div>
+</section>
+
     </div>
-  </>
+  </div>
   )
 };
 export default Home;
