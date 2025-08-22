@@ -29,7 +29,6 @@ function Gallery() {
   return (
     <div>
          <NavBar/>
-         <BackgroundBeams />
     <section id="gallery" className={`page mt-10 min-h-screen flex flex-col items-center justify-center py-8 md:py-16 px-0 transition-all duration-500 ease-in-out ${active ? 'active' : ''}`}>
       <div className={`w-full max-w-none px-0 transition-all duration-700 delay-100 ease-out ${active ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-8'}`}>
         <h2 className=" text-4xl md:text-5xl font-bold text-center mb-12 text-white">Gallery</h2>

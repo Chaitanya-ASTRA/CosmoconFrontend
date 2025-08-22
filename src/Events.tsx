@@ -34,7 +34,6 @@ function Event() {
   return (
     <div>
     <NavBar/>
-    <BackgroundBeams />
    <section
   id="events"
   className={`page mt-10 min-h-screen w-full flex flex-col items-center justify-start p-8 md:p-16 overflow-y-auto transition-all duration-500 ease-in-out ${active ? 'active' : ''}  `}
