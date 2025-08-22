@@ -35,7 +35,7 @@ function Objectives() {
         <div 
           className={`container mx-auto max-w-4xl transition-all duration-700 delay-100 ease-out ${active ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-8'}`}
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-center mb-12 bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-fuchsia-600">Our Objectives</h2>
+          <h2 className="text-4xl md:text-5xl font-bold text-center mb-12 text-white">Our Objectives</h2>
           {/* CORRECTED: The class was changed from 'space-y-6l' to 'space-y-6' */}
           <div className="flex flex-col space-y-6">
             {objectives.map((obj, index) => (
