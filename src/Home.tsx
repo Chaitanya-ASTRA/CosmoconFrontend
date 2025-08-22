@@ -222,6 +222,7 @@ import './Home.css'
 import Objectives from "./Objectives";
 import Event from "./Events";
 import NavBar from "./NavBar";
+import Gallery from "./Gallery";
 
 function Model() {
   const { scene } = useGLTF("/models/scene.gltf");
@@ -254,7 +255,7 @@ function Model() {
     }
   });
 
-  return <primitive ref={ref} object={scene} scale={1.5} />;
+  return <primitive ref={ref} object={scene} scale={2} />;
 }
 const Home = () => {
   const [showText, setShowText] = useState(false);
@@ -268,7 +269,8 @@ const Home = () => {
 
   return (
     <div id="home"> {/* Added id="home" for navigation */}
-    <NavBar/>
+    {showText && (<NavBar/>) }
+    
 
    <div className="w-full">
       {/* First Page (Canvas Section) */}
@@ -306,15 +308,21 @@ const Home = () => {
   </div>
 </section>
 
-<section className="w-full bg-blue-800 text-white py-32">
+<section className="w-full bg-[#0B0F1A] text-white py-32">
   <div className="w-full">
     <Objectives />
   </div>
 </section>
 
-<section className="w-full bg-purple-700 text-white py-32">
+<section className="w-full bg-[#0B0F1A] text-white py-32">
   <div className="w-full">
     <Event />
+  </div>
+</section>
+
+<section className="w-full bg-[#0B0F1A] text-white py-32">
+  <div className="w-full">
+    <Gallery/>
   </div>
 </section>
 
