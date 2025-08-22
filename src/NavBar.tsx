@@ -12,7 +12,7 @@ const NavBar = () => {
       <div className="flex items-center justify-between h-16 px-4 md:px-6">
         {/* Left Image */}
         <div className="hidden md:flex items-center">
-          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSO3TUTFJs3rP3y1xIlBxKzCJe0cmpAYLBVdw&s" alt="Logo Left" className="h-8 w-8 mr-3" />
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSO3TUTFJs3rP3y1xIlBxKzCJe0cmpAYLBVdw&s" alt="Logo Left" className="h-13 w-25 mr-3 rounded-full" />
           <span className="text-xl font-bold tracking-wider">COSMOCON</span>
         </div>
 
@@ -27,7 +27,7 @@ const NavBar = () => {
 
         {/* Right Image */}
         <div className="hidden md:flex items-center">
-          <img src="https://play-lh.googleusercontent.com/9narPKsFpTtuEXC3ctqdoh8qJVRdcymAXfUzqEuRqayPczmOFrMIMobRZ_EIC0v8HGdT=w600-h300-pc0xffffff-pd" alt="Logo Right" className="h-8 w-8 ml-3" />
+          <img src="https://play-lh.googleusercontent.com/9narPKsFpTtuEXC3ctqdoh8qJVRdcymAXfUzqEuRqayPczmOFrMIMobRZ_EIC0v8HGdT=w600-h300-pc0xffffff-pd" alt="Logo Right" className="h-13 w-35 ml-3 rounded-full" />
         </div>
 
         {/* Mobile Menu Button */}
