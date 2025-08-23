@@ -17,34 +17,8 @@ interface SectionProps {
 }
 
 
-import { useEffect, useState } from "react";
+import { type JSX } from "react";
 
-interface ScrambleTextProps {
-  text: string;
-  speed?: number; // scramble speed in ms
-}
-
-const ScrambleText = ({ text, speed = 50 }: ScrambleTextProps) => {
-  const [displayText, setDisplayText] = useState("");
-
-  useEffect(() => {
-    let i = 0;
-    const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-    const interval = setInterval(() => {
-      let scrambled = "";
-      for (let j = i; j < text.length; j++) {
-        scrambled += letters[Math.floor(Math.random() * letters.length)];
-      }
-      setDisplayText(text.slice(0, i) + scrambled);
-      i++;
-      if (i > text.length) clearInterval(interval);
-    }, speed);
-
-    return () => clearInterval(interval);
-  }, [text, speed]);
-
-  return <span>{displayText}</span>;
-};
 
 
 

@@ -1,4 +1,4 @@
-import React from 'react';
+
 import { Instagram, Linkedin, Mail } from 'lucide-react';
 import CBITLogo from "https://image-static.collegedunia.com/public/image/01-22:18-Chaitany-Bharathi_Institute_of_Technology_logo.png"; // Using CBIT logo as the footer logo
 

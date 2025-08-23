@@ -11,8 +11,7 @@ import NavBar from "./NavBar";
 import astraimg from "./astrafull.png";
 import CountdownTimer from "./CountdownTimer"; // Import the new component
 import Logos from "./Logos";
-import { Instagram, Linkedin, Mail, Phone } from 'lucide-react'; // Import lucide-react icons
-import Gallery from "./Gallery"; // Import Gallery component
+import { Instagram, Linkedin, Mail} from 'lucide-react'; // Import lucide-react icons
 
 // Removed InteractiveModel component as its logic is now merged into Model.
 
@@ -109,7 +108,7 @@ const Home = () => {
                   Register Now
                 </a>
               </div>
-              <CountdownTimer targetDate="2025-08-27T00:00:00" />
+              <CountdownTimer targetDate="2025-10-09T00:00:00" />
             </div>
           )}
 

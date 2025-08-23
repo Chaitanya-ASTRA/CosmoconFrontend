@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import NavBar from './NavBar';
-import { BackgroundBeams } from './components/ui/backgroundBeams';
+import { useState, useEffect } from 'react';
+
 
 function Gallery() {
     const [active, setActive] = useState(false);

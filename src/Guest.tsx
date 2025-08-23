@@ -1,10 +1,10 @@
-import { BackgroundBeams } from "./components/ui/backgroundBeams";
+
 interface GuestItem {
   name: string;
   role: string;
   img?: string;
 }
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import NavBar from "./NavBar";
 
 function Guest() {

@@ -1,6 +1,6 @@
-import React, { useRef, useMemo } from 'react';
+import  { useRef, useMemo } from 'react';
 import { Canvas, useFrame, useThree } from '@react-three/fiber';
-import { Stars, Sparkles, Preload, AdaptiveDpr, Float } from '@react-three/drei';
+import { Stars, Sparkles, Preload, AdaptiveDpr} from '@react-three/drei';
 import * as THREE from 'three';
 
 function ParallaxRig() {
