@@ -55,6 +55,7 @@ function Event() {
                 {/* Cyan Circle - Hidden on mobile */}
                 <div className={`absolute top-1/2 -translate-y-1/2 w-6 h-6 rounded-full bg-cyan-400 ${index % 2 === 0 ? '-right-3 md:-right-3' : '-left-3 md:-left-3'} z-10 hidden md:block`} />
 
+
                 {/* Event Time - Mobile: inside card */}
                 <div className="md:hidden mb-3">
                   <h3 className=" text-lg font-semibold text-cyan-400">{event.time}</h3>

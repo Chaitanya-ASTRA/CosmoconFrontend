@@ -282,12 +282,24 @@ const Home = () => {
             )}
 
                          {/* Register Button - Fixed Top Right */}
-             <div className="fixed top-11.5 right-4 md:right-52 z-40">
+             <div className="fixed top-4 right-4 md:right-52 z-40 md:block">
                <a 
                  href="https://cosmocon2025.fillout.com/register" 
                  target="_blank" 
                  rel="noopener noreferrer"
                  className="px-6 py-3 bg-amber-500 hover:bg-amber-400 text-black font-bold text-base md:text-lg rounded-lg transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:shadow-amber-300/50"
+               >
+                 Register Now
+               </a>
+             </div>
+
+             {/* Register Button - Mobile Top Center */}
+             <div className="fixed top-4 left-1/2 transform -translate-x-1/2 z-40 md:hidden">
+               <a 
+                 href="https://cosmocon2025.fillout.com/register" 
+                 target="_blank" 
+                 rel="noopener noreferrer"
+                 className="px-6 py-3 bg-amber-500 hover:bg-amber-400 text-black font-bold text-base rounded-lg transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:shadow-amber-300/50"
                >
                  Register Now
                </a>

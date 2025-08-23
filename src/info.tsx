@@ -1,8 +1,12 @@
-import type { JSX } from "react";
-import NavBar from "./NavBar";
+
+import dartImg from './dart.png';
+import rplImg from './rpl.png';
+import satelliteImg from './satellite.png';
 
 interface HighlightCardProps {
-  icon: string;
+  icon?: string;
+  imgSrc?: string;
+  imgAlt?: string;
   title: string;
   description: string;
   learnMoreLink: string;
@@ -44,34 +48,24 @@ const ScrambleText = ({ text, speed = 50 }: ScrambleTextProps) => {
 
 
 
-function HighlightCard({ icon, title, description, learnMoreLink }: HighlightCardProps): JSX.Element {
+function HighlightCard({ icon, imgSrc, imgAlt, title, description, learnMoreLink }: HighlightCardProps): JSX.Element {
   return (
     <div
       className="p-6 rounded-2xl bg-white/5 backdrop-blur-sm border border-white/10 shadow-xl 
-                 flex flex-col items-start space-y-3 transform transition-transform duration-300
+                 flex flex-col items-start space-y-3 transition-transform duration-300
                  hover:scale-105 hover:-translate-y-2 hover:shadow-2xl
                  perspective-1000"
-      style={{ transformStyle: "preserve-3d" }}
     >
-      {/* Rotating Icon */}
-      <div className="text-4xl w-12 h-12 flex items-center justify-center">
-        <span
-          className="inline-block"
-          style={{
-            display: "inline-block",
-            animation: "rotate3d 5s linear infinite",
-            transformStyle: "preserve-3d",
-          }}
-        >
-          {icon}
-        </span>
+      {/* Icon or Image */}
+      <div className="w-16 h-16 flex items-center justify-center mb-2">
+        {imgSrc ? (
+          <img src={imgSrc} alt={imgAlt} style={{ width: 56, height: 56, objectFit: 'contain' }} />
+        ) : (
+          <span className="text-4xl">{icon}</span>
+        )}
       </div>
-
-      {/* Stable Text */}
       <h4 className="text-xl font-semibold text-white">{title}</h4>
       <p className="text-sm text-white/70">{description}</p>
-
-      {/* Learn More Link */}
       <a 
         href={learnMoreLink}
         target="_blank"
@@ -80,17 +74,6 @@ function HighlightCard({ icon, title, description, learnMoreLink }: HighlightCar
       >
         Learn More →
       </a>
-
-      {/* CSS for rotation */}
-      <style>{`
-        @keyframes rotate3d {
-          0% { transform: rotateY(0deg) rotateX(0deg); }
-          25% { transform: rotateY(90deg) rotateX(15deg); }
-          50% { transform: rotateY(180deg) rotateX(0deg); }
-          75% { transform: rotateY(270deg) rotateX(-15deg); }
-          100% { transform: rotateY(360deg) rotateX(0deg); }
-        }
-      `}</style>
     </div>
   );
 }
@@ -103,27 +86,30 @@ function Info({ active = true }: SectionProps) {
       <div className={`container mx-auto max-w-6xl transition-all duration-700 delay-100 ease-out ${active ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-8'}`}>
         <h2 className="text-4xl md:text-5xl font-bold text-center mb-12 text-white">About COSMOCON</h2>
         <div className="flex flex-col lg:flex-row items-center space-y-8 lg:space-y-0 lg:space-x-12">
-          <div className="w-full lg:w-1/2 p-6 rounded-3xl bg-white/5 backdrop-blur-sm border border-white/10 shadow-xl">
+          <div className="w-full lg:w-1/2 about-cosmo-box">
             <div className="text-white">
-              <p className="mb-4 text-white/80 leading-relaxed">COSMOCON 2025 is India's largest student-led space carnival by ASTRA, designed to inspire and educate students about space exploration, research, and applications. This flagship event fosters interest in aeronautics, space science, and technology.</p>
-              <p className="text-white/80 leading-relaxed">Through hands-on workshops, technical showcases, and cultural events, COSMOCON provides a platform for students to engage with cutting-edge space advancements, interact with ISRO and DRDO experts, and showcase innovation in science and technology.</p>
+              <p className="mb-4 text-white/90">COSMOCON 2025 is India's largest student-led space carnival by ASTRA, designed to inspire and educate students about space exploration, research, and applications. This flagship event fosters interest in aeronautics, space science, and technology.</p>
+              <p className="text-white/90">Through hands-on workshops, technical showcases, and cultural events, COSMOCON provides a platform for students to engage with cutting-edge space advancements, interact with ISRO and DRDO experts, and showcase innovation in science and technology.</p>
             </div>
           </div>
           <div className="w-full lg:w-1/2 grid grid-cols-1 md:grid-cols-2 gap-6">
             <HighlightCard 
-              icon="🚀" 
+              imgSrc={rplImg}
+              imgAlt="Rocketry Workshop"
               title="Rocketry Workshop" 
               description="Design, build and launch rockets with aerospace experts" 
               learnMoreLink="https://docs.google.com/document/d/rocketry-workshop"
             />
             <HighlightCard 
-              icon="🛰️" 
+              imgSrc={satelliteImg}
+              imgAlt="CubeSat Hackathon"
               title="CubeSat Hackathon" 
               description="Build satellite prototypes with real-time data acquisition" 
               learnMoreLink="https://docs.google.com/document/d/cubesat-hackathon"
             />
             <HighlightCard 
-              icon="🤖" 
+              imgSrc={dartImg}
+              imgAlt="Rover & Robotics"
               title="Rover & Robotics" 
               description="Assemble and program rovers and robotic arms" 
               learnMoreLink="https://docs.google.com/document/d/rover-robotics"
