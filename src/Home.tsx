@@ -21,7 +21,7 @@ function Model() {
   const { viewport } = useThree();
   const [startTime] = useState(() => Date.now());
 
-  const scale = viewport.width < 5 ? 1 : 1.7;
+  const scale = viewport.width < 5 ? 1.2 : 1.7;
 
   useEffect(() => {
     if (ref.current) {
@@ -39,7 +39,7 @@ function Model() {
       // Smoothly tilt x-rotation to a positive value (e.g., 0.1 for a slight front tilt)
       ref.current.rotation.x = THREE.MathUtils.lerp(
         ref.current.rotation.x,
-        0.2, // Target slight tilt towards front
+        0.4, // Target slight tilt towards front
         0.02 // Smoothing factor
       );
       // Start continuous rotation
@@ -52,7 +52,7 @@ function Model() {
       ref={ref}
       object={scene}
       scale={scale}
-      position={[0, -1.0, 0]}
+      position={[0, 1.24, 0]}
     />
   );
 }
