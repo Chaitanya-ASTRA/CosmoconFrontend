@@ -1,6 +1,7 @@
 // NavBar.tsx
 import React, { useState } from "react";
 import { Menu, X } from "lucide-react";
+import AstraImg from "./astra.png";
 
 const NavBar = () => {
   const [open, setOpen] = useState(false);
@@ -12,7 +13,7 @@ const NavBar = () => {
       <div className="flex items-center justify-between h-16 px-4 md:px-6">
         {/* Left Image */}
         <div className="hidden md:flex items-center">
-          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSO3TUTFJs3rP3y1xIlBxKzCJe0cmpAYLBVdw&s" alt="Logo Left" className="h-13 w-25 mr-3 rounded-full" />
+          <img src={AstraImg} alt="Logo Left" className="h-13 w-20 mr-3 rounded-full" />
           <span className="text-xl font-bold tracking-wider">COSMOCON</span>
         </div>
 
@@ -27,7 +28,7 @@ const NavBar = () => {
 
         {/* Right Image */}
         <div className="hidden md:flex items-center">
-          <img src="https://play-lh.googleusercontent.com/9narPKsFpTtuEXC3ctqdoh8qJVRdcymAXfUzqEuRqayPczmOFrMIMobRZ_EIC0v8HGdT=w600-h300-pc0xffffff-pd" alt="Logo Right" className="h-13 w-35 ml-3 rounded-full" />
+          <img src="https://image-static.collegedunia.com/public/image/01-22:18-Chaitanya_Bharathi_Institute_of_Technology_logo.png" alt="Logo Right" className="h-13 w-20 ml-3 rounded-full" />
         </div>
 
         {/* Mobile Menu Button */}

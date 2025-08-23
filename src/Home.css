@@ -10,15 +10,6 @@ html, body, #root {
 }
 
 
-body::-webkit-scrollbar-track {
-  background: black; /* track color */
-  border-radius: 10px;
-  background-image: url('https://img.freepik.com/free-vector/3d-metal-star-isolated_1308-117760.jpg?semt=ais_hybrid&w=740&q=80'); /* small star icon */
-  background-repeat: repeat;
-  background-size: 8px 8px;
-}
-
-
 /* #root {
   transform: scale(1); 
   transform-origin: top top; 

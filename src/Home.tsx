@@ -212,7 +212,7 @@
 // }
 
 import React from "react";
-import { Canvas } from "@react-three/fiber";
+import { Canvas,useThree } from "@react-three/fiber";
 import { OrbitControls, useGLTF } from "@react-three/drei";
 import { useState, useRef,useEffect } from "react";
 import { useFrame } from "@react-three/fiber";
@@ -224,7 +224,23 @@ import Event from "./Events";
 import NavBar from "./NavBar";
 import Gallery from "./Gallery";
 import CountdownTimer from "./CountdownTimer"; // Import the new component
-import { Link } from "react-router-dom"; // Import Link from react-router-dom
+
+function ParallaxModel({ children }: { children: React.ReactNode }) {
+  const { camera, mouse } = useThree();
+  const ref = useRef<THREE.Object3D>(null!);
+
+  useFrame(() => {
+    if (!ref.current) return;
+    // Make the model follow mouse movements
+    const targetX = mouse.x * 0.5;
+    const targetY = mouse.y * 0.3;
+    ref.current.rotation.y = THREE.MathUtils.lerp(ref.current.rotation.y, targetX, 0.05);
+    ref.current.rotation.x = THREE.MathUtils.lerp(ref.current.rotation.x, targetY, 0.05);
+  });
+
+  return <group ref={ref}>{children}</group>;
+}
+
 
 function Model() {
   const { scene } = useGLTF("/models/scene.gltf");
@@ -276,9 +292,9 @@ const Home = () => {
 
    <div className="w-full">
       {/* First Page (Canvas Section) */}
-      <section className="relative h-screen w-full overflow-hidden min-h-screen">
+      <section className="relative h-screen w-full overflow-y-auto min-h-screen">
         <Canvas
-          style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%" }}
+          style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%"}}
           dpr={Math.min(window.devicePixelRatio, 2)}
           camera={{ position: [0, 0, 8], fov: 50 }}
           gl={{ antialias: true, alpha: true, powerPreference: "high-performance" }}
@@ -288,7 +304,10 @@ const Home = () => {
         >
           <ambientLight intensity={0.5} />
           <directionalLight position={[5, 5, 5]} intensity={1} />
-    <Model />
+          <ParallaxModel>
+
+            <Model/>
+          </ParallaxModel>
           <OrbitControls enablePan={true} enableZoom={true} enableRotate={true} />
         </Canvas>
 

@@ -8,6 +8,7 @@ interface TimelineEvent {
 import React, { useState, useEffect } from 'react';
 import NavBar from './NavBar';
 import { useSwipeable } from 'react-swipeable';
+import BackgroundBeam from "./BackgroundBeam"; // Import BackgroundBeam
 
 
 const backgrounds = [
@@ -32,8 +33,8 @@ function Event() {
   ];
 
   return (
-    <div className="h-screen w-full relative flex flex-col items-center justify-center antialiased">
-     {/* Add BackgroundBeams here */}
+    <div className="w-full relative flex flex-col antialiased z-10">
+     <BackgroundBeam /> {/* Add BackgroundBeam here */}
    <section
   id="events"
   className={`page mt-10 w-full flex flex-col items-center justify-start p-8 md:p-16 transition-all duration-500 ease-in-out ${active ? 'active' : ''}  `}
