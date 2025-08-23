@@ -46,14 +46,16 @@ function HighlightCard({ icon, imgSrc, imgAlt, title, description, learnMoreLink
   </div>
 
   {/* Bottom anchor */}
-  <a 
+ {learnMoreLink && (
+  <a
     href={learnMoreLink}
     target="_blank"
     rel="noopener noreferrer"
     className="text-blue-400 hover:text-blue-300 text-sm font-medium transition-colors duration-200 hover:underline cursor-pointer mt-4"
   >
-    Learn More →
+    Learn More
   </a>
+)}
 </div>
     </div>
   );
@@ -79,27 +81,27 @@ function Info({ active = true }: SectionProps) {
               imgAlt="Rocketry Workshop"
               title="Rocketry Workshop" 
               description="Design, build and launch rockets with aerospace experts" 
-              learnMoreLink="https://docs.google.com/document/d/rocketry-workshop"
+              learnMoreLink="https://drive.google.com/file/d/1sN9YOlOW9edQpVCoZb0tkjk-6kAaFGoB/view?usp=sharing"
             />
             <HighlightCard 
               imgSrc={satelliteImg}
               imgAlt="CubeSat Hackathon"
               title="CubeSat Hackathon" 
               description="Build satellite prototypes with real-time data acquisition" 
-              learnMoreLink="https://docs.google.com/document/d/cubesat-hackathon"
+              learnMoreLink="https://drive.google.com/file/d/183b45f0esOYrmQFdL83vEHTxoTUmPiD9/view?usp=sharing"
             />
             <HighlightCard 
               imgSrc={dartImg}
               imgAlt="Rover & Robotics"
               title="Rover & Robotics" 
               description="Assemble and program rovers and robotic arms" 
-              learnMoreLink="https://docs.google.com/document/d/rover-robotics"
+              learnMoreLink=""
             />
             <HighlightCard 
               icon="🎭" 
               title="Cultural Evening" 
               description="Music performances by Chaitanya Geethi & Vaadya" 
-              learnMoreLink="https://docs.google.com/document/d/cultural-evening"
+              learnMoreLink=""
             />
           </div>
         </div>
