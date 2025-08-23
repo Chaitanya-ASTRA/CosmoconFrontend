@@ -5,6 +5,7 @@ interface HighlightCardProps {
   icon: string;
   title: string;
   description: string;
+  learnMoreLink: string;
 }
 
 interface SectionProps {
@@ -43,7 +44,7 @@ const ScrambleText = ({ text, speed = 50 }: ScrambleTextProps) => {
 
 
 
-function HighlightCard({ icon, title, description }: HighlightCardProps): JSX.Element {
+function HighlightCard({ icon, title, description, learnMoreLink }: HighlightCardProps): JSX.Element {
   return (
     <div
       className="p-6 rounded-2xl bg-white/5 backdrop-blur-sm border border-white/10 shadow-xl 
@@ -70,6 +71,16 @@ function HighlightCard({ icon, title, description }: HighlightCardProps): JSX.El
       <h4 className="text-xl font-semibold text-white">{title}</h4>
       <p className="text-sm text-white/70">{description}</p>
 
+      {/* Learn More Link */}
+      <a 
+        href={learnMoreLink}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="text-blue-400 hover:text-blue-300 text-sm font-medium transition-colors duration-200 hover:underline cursor-pointer"
+      >
+        Learn More →
+      </a>
+
       {/* CSS for rotation */}
       <style>{`
         @keyframes rotate3d {
@@ -94,15 +105,35 @@ function Info({ active = true }: SectionProps) {
         <div className="flex flex-col lg:flex-row items-center space-y-8 lg:space-y-0 lg:space-x-12">
           <div className="w-full lg:w-1/2 p-6 rounded-3xl bg-white/5 backdrop-blur-sm border border-white/10 shadow-xl">
             <div className="text-white">
-              <p className="mb-4 text-white/80 leading-relaxed">COSMOCON is the premier space technology conference bringing together leading experts, researchers, and innovators from around the globe. Join us for three days of groundbreaking presentations, hands-on workshops, and networking opportunities.</p>
-              <p className="text-white/80 leading-relaxed">Explore the latest developments in space exploration, satellite technology, and commercial spaceflight while connecting with industry pioneers and future space technologists.</p>
+              <p className="mb-4 text-white/80 leading-relaxed">COSMOCON 2025 is India's largest student-led space carnival by ASTRA, designed to inspire and educate students about space exploration, research, and applications. This flagship event fosters interest in aeronautics, space science, and technology.</p>
+              <p className="text-white/80 leading-relaxed">Through hands-on workshops, technical showcases, and cultural events, COSMOCON provides a platform for students to engage with cutting-edge space advancements, interact with ISRO and DRDO experts, and showcase innovation in science and technology.</p>
             </div>
           </div>
           <div className="w-full lg:w-1/2 grid grid-cols-1 md:grid-cols-2 gap-6">
-            <HighlightCard icon="🚀" title="World-Class Speakers" description="Leading experts from NASA, ESA, SpaceX, and top universities" />
-            <HighlightCard icon="🛠️" title="Technical Workshops" description="Hands-on sessions on satellite design, mission planning, and more" />
-            <HighlightCard icon="🌐" title="Networking Opportunities" description="Connect with professionals from global space organizations" />
-            <HighlightCard icon="💡" title="Innovation Showcase" description="Latest technologies and breakthrough research presentations" />
+            <HighlightCard 
+              icon="🚀" 
+              title="Rocketry Workshop" 
+              description="Design, build and launch rockets with aerospace experts" 
+              learnMoreLink="https://docs.google.com/document/d/rocketry-workshop"
+            />
+            <HighlightCard 
+              icon="🛰️" 
+              title="CubeSat Hackathon" 
+              description="Build satellite prototypes with real-time data acquisition" 
+              learnMoreLink="https://docs.google.com/document/d/cubesat-hackathon"
+            />
+            <HighlightCard 
+              icon="🤖" 
+              title="Rover & Robotics" 
+              description="Assemble and program rovers and robotic arms" 
+              learnMoreLink="https://docs.google.com/document/d/rover-robotics"
+            />
+            <HighlightCard 
+              icon="🎭" 
+              title="Cultural Evening" 
+              description="Music performances by Chaitanya Geethi & Vaadya" 
+              learnMoreLink="https://docs.google.com/document/d/cultural-evening"
+            />
           </div>
         </div>
       </div>

@@ -7,8 +7,8 @@ function ParallaxRig() {
   const { camera, mouse } = useThree();
   const target = useRef(new THREE.Vector3());
   useFrame(() => {
-    target.current.set(mouse.x * 0.5, mouse.y * 0.3, camera.position.z);
-    camera.position.lerp(target.current, 0.03);
+    target.current.set(mouse.x * 0.1, mouse.y * 0.05, camera.position.z);
+    camera.position.lerp(target.current, 0.01);
     camera.lookAt(0, 0, 0);
   });
   return null;
@@ -17,7 +17,7 @@ function ParallaxRig() {
 function RotatingSpace() {
   const rotatingRef = useRef<THREE.Group>(null!);
   useFrame((_, delta) => {
-    if (rotatingRef.current) rotatingRef.current.rotation.y += delta * 0.05;
+    if (rotatingRef.current) rotatingRef.current.rotation.y += delta * 0.005;
   });
 
   const starProps = useMemo(() => ({ radius: 280, depth: 80, count: 16000, factor: 6, saturation: 0 }), []);
@@ -25,7 +25,7 @@ function RotatingSpace() {
   return (
     <group ref={rotatingRef}>
       <ParallaxRig />
-      <Sparkles size={1.8} scale={[40, 40, 40]} speed={0.5} count={1800} opacity={1} />
+      <Sparkles size={1.8} scale={[40, 40, 40]} speed={0.05} count={1800} opacity={1} />
       <Stars {...starProps} fade />
     </group>
   );

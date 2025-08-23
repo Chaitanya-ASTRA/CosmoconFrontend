@@ -1,8 +1,8 @@
+import './Home.css';
 // import {useMemo, useRef} from "react";
 // import { Canvas, useFrame, useThree } from "@react-three/fiber";
 // import { Stars, Float, Sparkles, Preload, AdaptiveDpr } from "@react-three/drei";
 // import * as THREE from "three";
-// import "./Home.css";
 // import NavBar from "./NavBar";
 // import { Link } from "react-router-dom";
 
@@ -213,12 +213,11 @@
 
 import React from "react";
 import { Canvas, useThree } from "@react-three/fiber";
-import { OrbitControls, useGLTF } from "@react-three/drei";
+import { useGLTF } from "@react-three/drei";
 import { useState, useRef, useEffect } from "react";
 import { useFrame } from "@react-three/fiber";
 import * as THREE from "three";
 import Info from "./info";
-import './Home.css'
 import Objectives from "./Objectives";
 import Event from "./Events";
 import NavBar from "./NavBar";
@@ -233,43 +232,21 @@ function Model() {
 
   const ref = useRef<THREE.Object3D>(null);
 
-  const [startTime] = useState(() => Date.now());
-
   useFrame(() => {
     if (!ref.current) return;
-    const elapsed = (Date.now() - startTime) / 1000; // seconds
-
-    if (elapsed < 2) {
-      // Stage 2: Small tilt
-      ref.current.rotation.x = THREE.MathUtils.lerp(
-        ref.current.rotation.x,
-        0.01,
-        0.05
-      );
-    } else if (elapsed < 4) {
-      // Stage 3: More tilt
-      ref.current.rotation.x = THREE.MathUtils.lerp(
-        ref.current.rotation.x,
-        0.3,
-        0.05
-      );
-    } else {
-      // Stage 4: Start rotating
-      ref.current.rotation.y += 0.01;
-    }
+    
+    // Set fixed orientation (you can adjust these values)
+    ref.current.rotation.x = 0.1; // Fixed X rotation (tilt forward)
+    ref.current.rotation.z = 0.1; // Fixed Z rotation (slight roll)
+    
+    // Only rotate around Y axis (spinning)
+    ref.current.rotation.y += 0.006; // Adjust speed here (0.01 = slow, 0.05 = medium, 0.1 = fast)
   });
 
-  return <primitive ref={ref} object={scene} scale={1.7} />;
+  return <primitive ref={ref} object={scene} scale={1.7} position={[0, -1.0, 0]} />;
 }
 const Home = () => {
-  const [showText, setShowText] = useState(false);
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setShowText(true);
-    }, 2000); // show text after 2s
-    return () => clearTimeout(timer);
-  }, []);
+  const [showText, setShowText] = useState(true); // Show immediately, let CSS animation handle fade-in
 
   return (
     <div id="home"> {/* Added id="home" for navigation */}
@@ -280,9 +257,9 @@ const Home = () => {
 
       <div className="w-full">
         {/* First Page (Canvas Section) */}
-        <section className="relative h-screen w-full">
+        <section className="relative h-screen w-full overflow-hidden">
           <Canvas
-            style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%", zIndex: 10, pointerEvents: "auto" }}
+            style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%", zIndex: 1, pointerEvents: "auto" }}
             dpr={Math.min(window.devicePixelRatio, 2)}
             camera={{ position: [0, 0, 8], fov: 50 }}
             gl={{ antialias: true, alpha: true, powerPreference: "high-performance" }}
@@ -290,20 +267,31 @@ const Home = () => {
               gl.setClearColor("#000000", 0);
             }}
           >
-            <ambientLight intensity={0.5} />
-            <directionalLight position={[5, 5, 5]} intensity={1} />
-            <Model />
-            <OrbitControls enablePan={true} enableZoom={false} enableRotate={true} />
+                         <ambientLight intensity={0.5} />
+             <directionalLight position={[5, 5, 5]} intensity={1} />
+             <Model />
           </Canvas>
 
-          {/* Overlay Text */}
-          {showText && (
-            <div className="absolute inset-0 flex flex-col justify-center items-center z-20 pointer-events-none">
-              <h1 className="cosmo-text">COSMOCON</h1>
-              <h1 className="cosmo-text ">2025</h1>
-              <CountdownTimer targetDate="2025-08-27T00:00:00" />
-            </div>
-          )}
+                                           {/* Overlay Text */}
+            {showText && (
+              <div className="absolute inset-0 flex flex-col justify-center items-center z-50 pointer-events-none">
+                <h1 className="cosmo-text">COSMOCON</h1>
+                <h1 className="cosmo-text year">2025</h1>
+                <CountdownTimer targetDate="2025-08-27T00:00:00" />
+              </div>
+            )}
+
+                         {/* Register Button - Fixed Top Right */}
+             <div className="fixed top-11.5 right-4 md:right-52 z-40">
+               <a 
+                 href="https://cosmocon2025.fillout.com/register" 
+                 target="_blank" 
+                 rel="noopener noreferrer"
+                 className="px-6 py-3 bg-amber-500 hover:bg-amber-400 text-black font-bold text-base md:text-lg rounded-lg transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:shadow-amber-300/50"
+               >
+                 Register Now
+               </a>
+             </div>
         </section>
 
         <section className="w-full bg-[#0B0F1A] text-white py-10">

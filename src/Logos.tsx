@@ -1,20 +1,27 @@
 import React from 'react';
 import AstraImg from './astra.png';
+import VectorImg from './vector.png';
 
 const Logos = () => {
   return (
     <>
-      {/* Astra Logo - Fixed Left Corner */}
-      <div className="fixed top-4 md:left-10 left-4 z-40">
+      {/* Vector × ASTRA Logo - Fixed Top Left Corner */}
+      <div className="fixed top-4 left-4 md:left-10 z-40 flex items-center space-x-3">
+        <img
+          src={VectorImg}
+          alt="Vector Logo"
+          className="h-12 w-auto object-contain md:h-16"
+        />
+        <span className="text-white text-xl md:text-2xl font-bold">×</span>
         <img
           src={AstraImg}
           alt="Astra Logo"
-          className="h-12 w-auto object-contain md:h-16"
+          className="h-14 w-auto object-contain md:h-20"
         />
       </div>
 
-      {/* CBIT Logo - Absolute Right Corner (scrolls with page) */}
-      <div className="absolute top-4 md:right-10  z-40 sm:display-none">
+      {/* CBIT Logo - Hidden on mobile, visible on desktop */}
+      <div className="hidden md:block absolute top-4 right-10 z-40">
         <img
           src="https://image-static.collegedunia.com/public/image/01-22:18-Chaitanya_Bharathi_Institute_of_Technology_logo.png"
           alt="CBIT Logo"

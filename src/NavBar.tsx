@@ -10,14 +10,14 @@ const NavBar = () => {
 
   return (
     <nav className="fixed top-[2%] md:left-1/2 md:transform md:-translate-x-1/2 w-[30%] md:w-[40%] right-1 backdrop-blur-md text-white z-50 rounded-2xl md:border md:border-white/20 shadow-lg">
-      <div className="flex items-center mx-2 justify-around h-16 px-0 md:px-6">
+      <div className="flex items-center mx-2 justify-around h-20 px-0 md:px-8">
 
         {/* Desktop Menu */}
-        <div className="hidden md:flex space-x-6">
-          <a href="#home" className="text-white hover:text-white hover:bg-white/10 px-3 py-2 rounded-md transition-all duration-300 font-medium">Home</a>
-          <a href="#about" className="text-white hover:text-white hover:bg-white/10 px-3 py-2 rounded-md transition-all duration-300 font-medium">About</a>
-          <a href="#objectives" className="text-white hover:text-white hover:bg-white/10 px-3 py-2 rounded-md transition-all duration-300 font-medium">Objectives</a>
-          <a href="#events" className="text-white hover:text-white hover:bg-white/10 px-3 py-2 rounded-md transition-all duration-300 font-medium">Events</a>
+        <div className="hidden md:flex space-x-23">
+          <a href="#home" className="text-white hover:text-white hover:bg-white/10 px-0 py-0 rounded-md transition-all duration-300 font-semibold text-xl">Home</a>
+          <a href="#about" className="text-white hover:text-white hover:bg-white/10 px-0 py-0 rounded-md transition-all duration-300 font-semibold text-xl">About</a>
+          <a href="#objectives" className="text-white hover:text-white hover:bg-white/10 px-0 py-0 rounded-md transition-all duration-300 font-semibold text-xl">Objectives</a>
+          <a href="#events" className="text-white hover:text-white hover:bg-white/10 px-0 py-0 rounded-md transition-all duration-300 font-semibold text-xl">Events</a>
         </div>
 
 
@@ -31,11 +31,11 @@ const NavBar = () => {
 
       {/* Mobile Dropdown Menu */}
       {open && (
-        <div className="md:hidden bg-black/90 px-4 py-3 space-y-2 rounded-b-2xl shadow-lg">
-          <a href="#home" className="block text-white hover:text-white hover:bg-white/10 px-3 py-2 rounded-md transition-all duration-300 font-medium">Home</a>
-          <a href="#about" className="block text-white hover:text-white hover:bg-white/10 px-3 py-2 rounded-md transition-all duration-300 font-medium">About</a>
-          <a href="#objectives" className="block text-white hover:text-white hover:bg-white/10 px-3 py-2 rounded-md transition-all duration-300 font-medium">Objectives</a>
-          <a href="#events" className="block text-white hover:text-white hover:bg-white/10 px-3 py-2 rounded-md transition-all duration-300 font-medium">Events</a>
+        <div className="md:hidden bg-black/90 px-6 py-4 space-y-3 rounded-b-2xl shadow-lg">
+          <a href="#home" className="block text-white hover:text-white hover:bg-white/10 px-0 py-0 rounded-md transition-all duration-300 font-semibold text-xl">Home</a>
+          <a href="#about" className="block text-white hover:text-white hover:bg-white/10 px-0 py-0 rounded-md transition-all duration-300 font-semibold text-xl">About</a>
+          <a href="#objectives" className="block text-white hover:text-white hover:bg-white/10 px-0 py-0 rounded-md transition-all duration-300 font-semibold text-xl">Objectives</a>
+          <a href="#events" className="block text-white hover:text-white hover:bg-white/10 px-0 py-0 rounded-md transition-all duration-300 font-semibold text-xl">Events</a>
         </div>
       )}
     </nav>

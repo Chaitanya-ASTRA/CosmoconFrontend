@@ -15,14 +15,12 @@ function Objectives() {
   
   // Data for the different objectives
   const objectives: ObjectiveItem[] = [
-    { num: 1, title: 'Inspire the Next Generation', description: 'Engage students and young professionals in space exploration and technology through interactive sessions and competitions.' },
-    { num: 2, title: 'Foster Collaboration', description: 'Provide a platform for industry experts, researchers, and startups to collaborate on new projects.' },
-    { num: 3, title: 'Showcase Innovation', description: 'Highlight cutting-edge technologies and research shaping the future of space.' },
-    { num: 4, title: 'Promote Sustainability', description: 'Discuss and develop solutions for sustainable space activities and orbital debris mitigation.' },
-    { num: 5, title: 'Advance Space Education', description: 'Contribute to the global knowledge base by sharing the latest findings and advancements.' },
-    // Adding more content to demonstrate scrolling
-    { num: 6, title: 'Expand Global Partnerships', description: 'Build and strengthen international collaborations to foster a unified approach to space exploration.' },
-    { num: 7, title: 'Encourage Entrepreneurship', description: 'Support new ventures in the space sector with resources, mentorship, and networking opportunities.' },
+    { num: 1, title: 'Foster Practical Skills', description: 'Develop hands-on understanding in aerospace, robotics, and satellite systems through immersive workshops like rocketry, CanSat, A-Rover, and robotic arm fabrication.' },
+    { num: 2, title: 'Showcase Student Innovation', description: 'Provide a platform for student innovation and research through project exhibitions and technical conferences that encourage knowledge exchange across institutions.' },
+    { num: 3, title: 'Promote Interdisciplinary Collaboration', description: 'Host technical and non-technical events from robotics challenges to debates and quizzes, fostering creative problem-solving and collaboration.' },
+    { num: 4, title: 'Celebrate India\'s Space Achievements', description: 'Create awareness about India\'s growing prominence in space and defense technologies, inspiring youth to contribute to the nation\'s technological progress.' },
+    { num: 5, title: 'Position as STEM Excellence Center', description: 'Establish the college as a center of excellence in STEM education and innovation, enhancing its reputation in academic and professional circles.' },
+    { num: 6, title: 'Create Balanced Experience', description: 'Combine technical rigor with cultural vibrance through activities like musical night, ensuring a memorable and engaging experience for all participants.' },
   ];
 
   return (

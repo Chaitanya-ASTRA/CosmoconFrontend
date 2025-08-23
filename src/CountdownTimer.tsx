@@ -39,15 +39,22 @@ const CountdownTimer: React.FC<CountdownProps> = ({ targetDate }) => {
     }
 
     timerComponents.push(
-      <span key={interval} className="text-white text-3xl font-mono">
-        {value.toString().padStart(2, '0')}{interval.charAt(0)}
-      </span>
+      <div key={interval} className="flex flex-col items-center">
+        <div className="bg-gray-800/80 backdrop-blur-sm border border-gray-600/60 rounded-lg px-4 py-3 min-w-[80px] text-center">
+          <div className="text-gray-200 text-2xl md:text-4xl font-mono font-bold">
+            {value.toString().padStart(2, '0')}
+          </div>
+        </div>
+        <div className="text-gray-400 text-sm md:text-base mt-2 font-medium uppercase tracking-wider">
+          {interval}
+        </div>
+      </div>
     );
   });
 
   return (
-    <div className="mt-4 flex space-x-4">
-      {timerComponents.length ? timerComponents : <span className="text-white cosmo-text text-3xl md:text-9xl font-mono">Event Started!</span>}
+    <div className="mt-6 flex space-x-4 md:space-x-6">
+      {timerComponents.length ? timerComponents : <span className="text-white cosmo-text text-3xl md:text-4xl font-mono">Event Started!</span>}
     </div>
   );
 };
