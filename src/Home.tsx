@@ -23,6 +23,7 @@ function Model() {
 
   const scale = viewport.width < 5 ? 1.2 : 1.7;
   const position = viewport.width < 5 ? [0, 1.2, 0] : [0, -1.0, 0];
+  const tilt = viewport.width <5 ? 0.1 : 0.25;
 
   useEffect(() => {
     if (ref.current) {
@@ -40,7 +41,7 @@ function Model() {
       // Smoothly tilt x-rotation to a positive value (e.g., 0.1 for a slight front tilt)
       ref.current.rotation.x = THREE.MathUtils.lerp(
         ref.current.rotation.x,
-        0.25, // Target slight tilt towards front
+        tilt, // Target slight tilt towards front
         0.02 // Smoothing factor
       );
       // Start continuous rotation
@@ -78,7 +79,7 @@ const Home = () => {
 
       <div className="w-full">
         {/* First Page (Canvas Section) */}
-        <section className="relative h-screen w-full">
+        <section className="relative h-[87vh] w-full">
           <Canvas
             style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%", zIndex: 10, pointerEvents: "auto" }}
             dpr={Math.min(window.devicePixelRatio, 2)}
@@ -116,7 +117,7 @@ const Home = () => {
         </section>
 
 
-        <section className="w-full bg-[#0B0F1A] text-white py-10">
+        <section className="w-full bg-black mt-10 text-white py-10">
           <div className="w-full">
             <Info active={true} />
           </div>
