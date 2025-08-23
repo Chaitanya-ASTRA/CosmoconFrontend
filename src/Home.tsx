@@ -79,7 +79,7 @@ const Home = () => {
 
       <div className="w-full">
         {/* First Page (Canvas Section) */}
-        <section className="relative h-[87vh] w-full">
+        <section className="relative md:h-screen h-[87h] w-full">
           <Canvas
             style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%", zIndex: 10, pointerEvents: "auto" }}
             dpr={Math.min(window.devicePixelRatio, 2)}
