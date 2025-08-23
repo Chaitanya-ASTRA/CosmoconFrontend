@@ -278,9 +278,9 @@ const Home = () => {
 
    <div className="w-full">
       {/* First Page (Canvas Section) */}
-      <section className="relative h-screen w-full overflow-y-auto min-h-screen">
+      <section className="relative h-screen w-full">
         <Canvas
-          style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%"}}
+          style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%", zIndex: 10, pointerEvents: "auto" }}
           dpr={Math.min(window.devicePixelRatio, 2)}
           camera={{ position: [0, 0, 8], fov: 50 }}
           gl={{ antialias: true, alpha: true, powerPreference: "high-performance" }}
@@ -290,47 +290,43 @@ const Home = () => {
         >
           <ambientLight intensity={0.5} />
           <directionalLight position={[5, 5, 5]} intensity={1} />
-          
-    <Model />
-          <OrbitControls enablePan={true} enableZoom={true} enableRotate={true} />
+          <Model />
+          <OrbitControls enablePan={true} enableZoom={false} enableRotate={true} />
         </Canvas>
 
         {/* Overlay Text */}
         {showText && (
-          <>
-          <div className="absolute inset-0 flex flex-col justify-center items-center">
+          <div className="absolute inset-0 flex flex-col justify-center items-center z-20 pointer-events-none">
             <h1 className="cosmo-text">COSMOCON</h1>
             <h1 className="cosmo-text ">2025</h1>
-            <CountdownTimer targetDate="2025-08-27T00:00:00" /> {/* Add Countdown Timer here */}
+            <CountdownTimer targetDate="2025-08-27T00:00:00" />
           </div>
-          </>
         )}
       </section>
 
       <section className="w-full bg-[#0B0F1A] text-white py-10">
-  <div className="w-full">
-    <Info active={true} />
-  </div>
-</section>
+        <div className="w-full">
+          <Info active={true} />
+        </div>
+      </section>
 
-<section className="w-full bg-[#0B0F1A] text-white py-10">
-  <div className="w-full">
-    <Objectives />
-  </div>
-</section>
+      <section className="w-full bg-[#0B0F1A] text-white py-10">
+        <div className="w-full">
+          <Objectives />
+        </div>
+      </section>
 
-<section className="w-full bg-[#0B0F1A] text-white py-10">
-  <div className="w-full">
-    <Event />
-  </div>
-</section>
+      <section className="w-full bg-[#0B0F1A] text-white py-10">
+        <div className="w-full">
+          <Event />
+        </div>
+      </section>
 
-<section className="w-full bg-[#0B0F1A] text-white py-10">
-  <div className="w-full">
-    <Gallery/>
-  </div>
-</section>
-
+      <section className="w-full bg-[#0B0F1A] text-white py-10">
+        <div className="w-full">
+          <Gallery />
+        </div>
+      </section>
     </div>
   </div>
   )
