@@ -225,21 +225,7 @@ import NavBar from "./NavBar";
 import Gallery from "./Gallery";
 import CountdownTimer from "./CountdownTimer"; // Import the new component
 
-function ParallaxModel({ children }: { children: React.ReactNode }) {
-  const { camera, mouse } = useThree();
-  const ref = useRef<THREE.Object3D>(null!);
 
-  useFrame(() => {
-    if (!ref.current) return;
-    // Make the model follow mouse movements
-    const targetX = mouse.x * 0.5;
-    const targetY = mouse.y * 0.3;
-    ref.current.rotation.y = THREE.MathUtils.lerp(ref.current.rotation.y, targetX, 0.05);
-    ref.current.rotation.x = THREE.MathUtils.lerp(ref.current.rotation.x, targetY, 0.05);
-  });
-
-  return <group ref={ref}>{children}</group>;
-}
 
 
 function Model() {
@@ -304,10 +290,8 @@ const Home = () => {
         >
           <ambientLight intensity={0.5} />
           <directionalLight position={[5, 5, 5]} intensity={1} />
-          <ParallaxModel>
-
-            <Model/>
-          </ParallaxModel>
+          
+    <Model />
           <OrbitControls enablePan={true} enableZoom={true} enableRotate={true} />
         </Canvas>
 
@@ -316,7 +300,7 @@ const Home = () => {
           <>
           <div className="absolute inset-0 flex flex-col justify-center items-center">
             <h1 className="cosmo-text">COSMOCON</h1>
-            <h1 className="cosmo-text year">2025</h1>
+            <h1 className="cosmo-text ">2025</h1>
             <CountdownTimer targetDate="2025-08-27T00:00:00" /> {/* Add Countdown Timer here */}
           </div>
           </>
