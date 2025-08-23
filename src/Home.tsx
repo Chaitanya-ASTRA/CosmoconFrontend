@@ -11,7 +11,7 @@ import NavBar from "./NavBar";
 import astraimg from "./astrafull.png";
 import CountdownTimer from "./CountdownTimer"; // Import the new component
 import Logos from "./Logos";
-import { Instagram, Linkedin, Mail } from 'lucide-react'; // Import lucide-react icons
+import { Instagram, Linkedin, Mail, Phone } from 'lucide-react'; // Import lucide-react icons
 import Gallery from "./Gallery"; // Import Gallery component
 
 // Removed InteractiveModel component as its logic is now merged into Model.
@@ -139,16 +139,25 @@ const Home = () => {
           <div className="container mx-auto px-4 flex flex-col md:flex-row items-center md:justify-around space-y-6 md:space-y-0">
 
             {/* Left Side: Image */}
-            <div className="md:w-1/2 flex justify-center ">
+            <div className="md:w-1/3 flex justify-center ">
               <img
                 src={astraimg}
                 alt="Astra Logo"
                 className="max-w-[500px] w-full h-auto object-contain"
               />
             </div>
+            {/* Middle Section:Address */}
+            <div className='flex flex-col md:w-1/3 items-center text-center'> 
+            <h2 className="text-xl font-semibold mb-4">Address</h2>
+             <div className="flex flex-col items-center  space-y-4">
+            <h2>Gandipet, Hyderabad, Telangana,</h2>
+            <h2>PIN : 500075</h2>
+            <h2>Mobile : 9949375526 </h2>
+            </div>
+            </div>
 
             {/* Right Side: Contact Links */}
-            <div className="flex flex-col md:w-1/2 items-center ">
+            <div className="flex flex-col md:w-1/3 items-center ">
               <h2 className="text-xl font-semibold mb-4">Connect With Us</h2>
               <div className="flex flex-col items-center  space-y-4">
 
@@ -182,42 +191,5 @@ const Home = () => {
   );
 };
 
-// New RegisterButton component to handle scroll-based positioning
-const RegisterButton = () => {
-  const [scrolledDown, setScrolledDown] = useState(false);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > 100) { // Adjust threshold as needed
-        setScrolledDown(true);
-      } else {
-        setScrolledDown(false);
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
-
-  const buttonClasses = `
-    fixed z-40 md:hidden 
-    px-6 py-3 bg-amber-500 hover:bg-amber-400 text-black font-bold 
-    text-base rounded-lg transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:shadow-amber-300/50
-    ${scrolledDown ? 'top-4 right-4 -translate-x-0' : 'top-4 left-1/2 -translate-x-1/2'}
-  `;
-
-  return (
-    <div className={buttonClasses}>
-      <a
-        href="https://cosmocon2025.fillout.com/register"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        Register Now
-      </a>
-    </div>
-  );
-};
 export default Home;
