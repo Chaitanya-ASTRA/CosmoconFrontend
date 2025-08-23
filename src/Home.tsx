@@ -212,9 +212,9 @@
 // }
 
 import React from "react";
-import { Canvas,useThree } from "@react-three/fiber";
+import { Canvas, useThree } from "@react-three/fiber";
 import { OrbitControls, useGLTF } from "@react-three/drei";
-import { useState, useRef,useEffect } from "react";
+import { useState, useRef, useEffect } from "react";
 import { useFrame } from "@react-three/fiber";
 import * as THREE from "three";
 import Info from "./info";
@@ -222,10 +222,10 @@ import './Home.css'
 import Objectives from "./Objectives";
 import Event from "./Events";
 import NavBar from "./NavBar";
-import Gallery from "./Gallery";
+import astraimg from "./astrafull.png";
 import CountdownTimer from "./CountdownTimer"; // Import the new component
-
-
+import Logos from "./Logos";
+import { Instagram, Linkedin, Mail } from 'lucide-react'; // Import lucide-react icons
 
 
 function Model() {
@@ -259,7 +259,7 @@ function Model() {
     }
   });
 
-  return <primitive ref={ref} object={scene} scale={2} />;
+  return <primitive ref={ref} object={scene} scale={1.7} />;
 }
 const Home = () => {
   const [showText, setShowText] = useState(false);
@@ -273,62 +273,100 @@ const Home = () => {
 
   return (
     <div id="home"> {/* Added id="home" for navigation */}
-    {showText && (<NavBar/>) }
-    
+      {showText && (<>
+        <NavBar />
+        <Logos /></>)}
 
-   <div className="w-full">
-      {/* First Page (Canvas Section) */}
-      <section className="relative h-screen w-full">
-        <Canvas
-          style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%", zIndex: 10, pointerEvents: "auto" }}
-          dpr={Math.min(window.devicePixelRatio, 2)}
-          camera={{ position: [0, 0, 8], fov: 50 }}
-          gl={{ antialias: true, alpha: true, powerPreference: "high-performance" }}
-          onCreated={({ gl }) => {
-            gl.setClearColor("#000000", 0);
-          }}
-        >
-          <ambientLight intensity={0.5} />
-          <directionalLight position={[5, 5, 5]} intensity={1} />
-          <Model />
-          <OrbitControls enablePan={true} enableZoom={false} enableRotate={true} />
-        </Canvas>
 
-        {/* Overlay Text */}
-        {showText && (
-          <div className="absolute inset-0 flex flex-col justify-center items-center z-20 pointer-events-none">
-            <h1 className="cosmo-text">COSMOCON</h1>
-            <h1 className="cosmo-text ">2025</h1>
-            <CountdownTimer targetDate="2025-08-27T00:00:00" />
+      <div className="w-full">
+        {/* First Page (Canvas Section) */}
+        <section className="relative h-screen w-full">
+          <Canvas
+            style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%", zIndex: 10, pointerEvents: "auto" }}
+            dpr={Math.min(window.devicePixelRatio, 2)}
+            camera={{ position: [0, 0, 8], fov: 50 }}
+            gl={{ antialias: true, alpha: true, powerPreference: "high-performance" }}
+            onCreated={({ gl }) => {
+              gl.setClearColor("#000000", 0);
+            }}
+          >
+            <ambientLight intensity={0.5} />
+            <directionalLight position={[5, 5, 5]} intensity={1} />
+            <Model />
+            <OrbitControls enablePan={true} enableZoom={false} enableRotate={true} />
+          </Canvas>
+
+          {/* Overlay Text */}
+          {showText && (
+            <div className="absolute inset-0 flex flex-col justify-center items-center z-20 pointer-events-none">
+              <h1 className="cosmo-text">COSMOCON</h1>
+              <h1 className="cosmo-text ">2025</h1>
+              <CountdownTimer targetDate="2025-08-27T00:00:00" />
+            </div>
+          )}
+        </section>
+
+        <section className="w-full bg-[#0B0F1A] text-white py-10">
+          <div className="w-full">
+            <Info active={true} />
           </div>
-        )}
-      </section>
+        </section>
 
-      <section className="w-full bg-[#0B0F1A] text-white py-10">
-        <div className="w-full">
-          <Info active={true} />
-        </div>
-      </section>
+        <section className="w-full bg-[#0B0F1A] text-white py-10">
+          <div className="w-full">
+            <Objectives />
+          </div>
+        </section>
 
-      <section className="w-full bg-[#0B0F1A] text-white py-10">
-        <div className="w-full">
-          <Objectives />
-        </div>
-      </section>
+        <section className="w-full bg-[#0B0F1A] text-white py-10">
+          <div className="w-full">
+            <Event />
+          </div>
+        </section>
+        <footer className="w-full bg-black text-white py-10">
+          <div className="container mx-auto px-4 flex flex-col md:flex-row items-center md:justify-around space-y-6 md:space-y-0">
 
-      <section className="w-full bg-[#0B0F1A] text-white py-10">
-        <div className="w-full">
-          <Event />
-        </div>
-      </section>
+            {/* Left Side: Image */}
+            <div className="md:w-1/2 flex justify-center ">
+              <img
+                src={astraimg}
+                alt="Astra Logo"
+                className="max-w-[500px] w-full h-auto object-contain"
+              />
+            </div>
 
-      <section className="w-full bg-[#0B0F1A] text-white py-10">
-        <div className="w-full">
-          <Gallery />
-        </div>
-      </section>
+            {/* Right Side: Contact Links */}
+            <div className="flex flex-col md:w-1/2 items-center ">
+              <h2 className="text-xl font-semibold mb-4">Connect With Us</h2>
+              <div className="flex flex-col items-center  space-y-4">
+
+                {/* Instagram */}
+                <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer"
+                   className="flex items-center space-x-3 text-gray-300 hover:text-white transition-all duration-300 transform hover:-translate-y-1">
+                  <Instagram size={28} className="text-purple-400 group-hover:text-white" />
+                  <span className="text-lg">Instagram</span>
+                </a>
+
+                {/* LinkedIn */}
+                <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer"
+                   className="flex items-center space-x-3 text-gray-300 hover:text-white transition-all duration-300 transform hover:-translate-y-1">
+                  <Linkedin size={28} className="text-blue-400 group-hover:text-white" />
+                  <span className="text-lg">LinkedIn</span>
+                </a>
+
+                {/* Mail */}
+                <a href="mailto:info@cosmocon.com" className="flex items-center space-x-3 text-gray-300 hover:text-white transition-all duration-300 transform hover:-translate-y-1">
+                  <Mail size={28} className="text-red-400 group-hover:text-white" />
+                  <span className="text-lg">info@cosmocon.com</span>
+                </a>
+              </div>
+            </div>
+
+          </div>
+        </footer>
+
+      </div>
     </div>
-  </div>
   )
 };
 export default Home;

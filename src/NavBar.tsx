@@ -9,13 +9,8 @@ const NavBar = () => {
   const toggleMenu = () => setOpen(!open);
 
   return (
-    <nav className="fixed top-[2%] left-1/2 transform -translate-x-1/2 w-[70%] md:w-[60%] bg-black/70 backdrop-blur-md text-white z-50 rounded-2xl border border-white/20 shadow-lg">
-      <div className="flex items-center justify-between h-16 px-4 md:px-6">
-        {/* Left Image */}
-        <div className="hidden md:flex items-center">
-          <img src={AstraImg} alt="Logo Left" className="h-13 w-20 mr-3 rounded-full" />
-          <span className="text-xl font-bold tracking-wider">COSMOCON</span>
-        </div>
+    <nav className="fixed top-[2%] md:left-1/2 md:transform md:-translate-x-1/2 w-[30%] md:w-[40%] right-1 backdrop-blur-md text-white z-50 rounded-2xl md:border md:border-white/20 shadow-lg">
+      <div className="flex items-center mx-2 justify-around h-16 px-0 md:px-6">
 
         {/* Desktop Menu */}
         <div className="hidden md:flex space-x-6">
@@ -23,13 +18,8 @@ const NavBar = () => {
           <a href="#about" className="text-white hover:text-white hover:bg-white/10 px-3 py-2 rounded-md transition-all duration-300 font-medium">About</a>
           <a href="#objectives" className="text-white hover:text-white hover:bg-white/10 px-3 py-2 rounded-md transition-all duration-300 font-medium">Objectives</a>
           <a href="#events" className="text-white hover:text-white hover:bg-white/10 px-3 py-2 rounded-md transition-all duration-300 font-medium">Events</a>
-          <a href="#gallery" className="text-white hover:text-white hover:bg-white/10 px-3 py-2 rounded-md transition-all duration-300 font-medium">Gallery</a>
         </div>
 
-        {/* Right Image */}
-        <div className="hidden md:flex items-center">
-          <img src="https://image-static.collegedunia.com/public/image/01-22:18-Chaitanya_Bharathi_Institute_of_Technology_logo.png" alt="Logo Right" className="h-13 w-20 ml-3 rounded-full" />
-        </div>
 
         {/* Mobile Menu Button */}
         <div className="md:hidden">
@@ -46,7 +36,6 @@ const NavBar = () => {
           <a href="#about" className="block text-white hover:text-white hover:bg-white/10 px-3 py-2 rounded-md transition-all duration-300 font-medium">About</a>
           <a href="#objectives" className="block text-white hover:text-white hover:bg-white/10 px-3 py-2 rounded-md transition-all duration-300 font-medium">Objectives</a>
           <a href="#events" className="block text-white hover:text-white hover:bg-white/10 px-3 py-2 rounded-md transition-all duration-300 font-medium">Events</a>
-          <a href="#gallery" className="block text-white hover:text-white hover:bg-white/10 px-3 py-2 rounded-md transition-all duration-300 font-medium">Gallery</a>
         </div>
       )}
     </nav>
