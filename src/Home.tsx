@@ -106,7 +106,7 @@ const Home = () => {
                   rel="noopener noreferrer"
                   className="px-6 py-3  bg-amber-500 hover:bg-amber-400 text-black font-bold text-base md:text-lg rounded-lg transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:shadow-amber-300/50"
                 >
-                  Register Now
+                  Click Here To Register
                 </a>
               </div>
               <CountdownTimer targetDate="2025-10-09T00:00:00" />
