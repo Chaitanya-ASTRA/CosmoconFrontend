@@ -1,0 +1,77 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import url('https://fonts.googleapis.com/css2?family=Zen+Dots&display=swap');
+
+html, body, #root {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  background: black;
+  font-family: "Zen Dots", cursive !important;
+  font-optical-sizing: auto !important;
+  font-style: normal !important;
+}
+
+
+/* #root {
+  transform: scale(1); 
+  transform-origin: top top; 
+  width: 100vw;
+  height: 100vh;
+} 
+*/
+
+
+
+.mar{ 
+  margin-top: 250px;
+}
+* {
+  box-sizing: border-box;
+}
+
+.cosmo-text {
+  color: white;
+  font-weight: 400;
+  opacity: 0;
+  font-size: 10vw;
+  line-height: 1;
+  font-family: "Zen Dots", cursive !important;
+  text-align: center;
+  text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+  animation: fadeIn 3s ease-in-out forwards;
+}
+
+/* Year text - centered below COSMOCON */
+.cosmo-text.year {
+  font-size: 6vw;   /* smaller than COSMOCON */
+  align-self: center; /* center it */
+  margin-top: -1vw;  /* bring closer to COSMOCON */
+  text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+}
+
+/* Fade-in animation */
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+/* Content section fonts */
+.content-text {
+  font-family: "Zen Dots", cursive !important;
+  font-weight: 400;
+}
+
+.section-title {
+  font-family: "Zen Dots", cursive !important;
+  font-weight: 700;
+  font-size: 2.5rem;
+}
+
+.section-subtitle {
+  font-family: "Zen Dots", cursive !important;
+  font-weight: 500;
+  font-size: 1.25rem;
+}
+

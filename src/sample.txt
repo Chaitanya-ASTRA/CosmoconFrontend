@@ -1,0 +1,466 @@
+// function Info() {
+//     return (
+//          <section id="about" className="page">
+//         <div className="container">
+//             <div className="about-section">
+//                 <h2 className="section-title gradient-text">About COSMOCON</h2>
+//                 <div className="about-content">
+//                     <div className="about-card glass-card">
+//                         <div className="about-image">
+//                             <div className="image-placeholder">
+//                                 <span className="placeholder-icon">🚀</span>
+//                             </div>
+//                         </div>
+//                         <div className="about-text">
+//                             <p>COSMOCON is the premier space technology conference bringing together leading experts, researchers, and innovators from around the globe. Join us for three days of groundbreaking presentations, hands-on workshops, and networking opportunities.</p>
+//                             <p>Explore the latest developments in space exploration, satellite technology, and commercial spaceflight while connecting with industry pioneers and future space technologists.</p>
+//                         </div>
+//                     </div>
+//                 </div>
+//             </div>
+
+//             <div className="highlights-section">
+//                 <h3 className="section-subtitle">Conference Highlights</h3>
+//                 <div className="bento-grid">
+//                     <div className="highlight-card glass-card" data-icon="🚀">
+//                         <div className="highlight-icon">🚀</div>
+//                         <h4>World-className Speakers</h4>
+//                         <p>Leading experts from NASA, ESA, SpaceX, and top universities</p>
+//                     </div>
+//                     <div className="highlight-card glass-card" data-icon="🛠️">
+//                         <div className="highlight-icon">🛠️</div>
+//                         <h4>Technical Workshops</h4>
+//                         <p>Hands-on sessions on satellite design, mission planning, and more</p>
+//                     </div>
+//                     <div className="highlight-card glass-card" data-icon="🌐">
+//                         <div className="highlight-icon">🌐</div>
+//                         <h4>Networking Opportunities</h4>
+//                         <p>Connect with professionals from global space organizations</p>
+//                     </div>
+//                     <div className="highlight-card glass-card" data-icon="💡">
+//                         <div className="highlight-icon">💡</div>
+//                         <h4>Innovation Showcase</h4>
+//                         <p>Latest technologies and breakthrough research presentations</p>
+//                     </div>
+//                     <div className="highlight-card glass-card" data-icon="💼">
+//                         <div className="highlight-icon">💼</div>
+//                         <h4>Career Fair</h4>
+//                         <p>Job opportunities with leading aerospace companies</p>
+//                     </div>
+//                     <div className="highlight-card glass-card" data-icon="🏆">
+//                         <div className="highlight-icon">🏆</div>
+//                         <h4>Student Competitions</h4>
+//                         <p>Design challenges and research presentation contests</p>
+//                     </div>
+//                 </div>
+//             </div>
+//         </div>
+//     </section>
+//     )
+// }
+
+
+// export default Info;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+import React, { useState, useEffect, useMemo, useRef, type JSX } from 'react';
+import { Canvas, useFrame, useThree } from '@react-three/fiber';
+import { Stars, Float, Sparkles, Preload, AdaptiveDpr } from '@react-three/drei';
+import * as THREE from 'three';
+
+// Type Definitions
+// ----------------------------------------------------------------------------------------------------
+
+interface SatelliteProps {
+  radius?: number;
+  speed?: number;
+  size?: number;
+  phase?: number;
+}
+
+interface AsteroidFieldProps {
+  count?: number;
+  radius?: number;
+  spread?: number;
+}
+
+interface NavbarProps {
+  currentPage: string;
+  onNavClick: (page: string) => void;
+}
+
+interface HighlightCardProps {
+  icon: string;
+  title: string;
+  description: string;
+}
+
+interface ObjectiveItem {
+  num: number;
+  title: string;
+  description: string;
+}
+
+
+interface ActivityItem {
+  title: string;
+  description: string;
+}
+
+
+
+
+
+interface SectionProps {
+  active: boolean;
+}
+
+// 3D Background Scene Components
+// ----------------------------------------------------------------------------------------------------
+
+function ParallaxRig(): null {
+  const { camera, mouse } = useThree();
+  const target = useRef(new THREE.Vector3());
+  useFrame(() => {
+    target.current.set(mouse.x * 0.5, mouse.y * 0.3, camera.position.z);
+    camera.position.lerp(target.current, 0.03);
+    camera.lookAt(0, 0, 0);
+  });
+  return null;
+}
+
+function Satellite({ radius = 4.2, speed = 0.5, size = 0.22, phase = 0 }: SatelliteProps): JSX.Element {
+  const ref = useRef<THREE.Mesh>(null!);
+  const hover = useRef(false);
+  useFrame((state) => {
+    const t = state.clock.getElapsedTime() * speed + phase;
+    const x = Math.cos(t) * radius;
+    const z = Math.sin(t) * radius;
+    const y = Math.sin(t * 1.8) * 0.4;
+    ref.current.position.set(x, y, z);
+    const s = hover.current ? size * 1.8 : size;
+    ref.current.scale.setScalar(THREE.MathUtils.lerp(ref.current.scale.x, s, 0.2));
+    ref.current.rotation.x += 0.02;
+    ref.current.rotation.y += 0.02;
+  });
+  return (
+    <mesh ref={ref} onPointerOver={() => (hover.current = true)} onPointerOut={() => (hover.current = false)} castShadow>
+      <icosahedronGeometry args={[1, 0]} />
+      <meshStandardMaterial color="#ffffff" metalness={0.6} roughness={0.25} />
+    </mesh>
+  );
+}
+
+function AsteroidField({ count = 120, radius = 10, spread = 10 }: AsteroidFieldProps): JSX.Element {
+  const meshRef = useRef<THREE.InstancedMesh>(null!);
+  const dummy = useMemo(() => new THREE.Object3D(), []);
+  const params = useMemo(
+    () =>
+      Array.from({ length: count }).map(() => ({
+        r: radius + Math.random() * spread,
+        speed: 0.05 + Math.random() * 0.25,
+        size: 0.08 + Math.random() * 0.22,
+        phase: Math.random() * Math.PI * 2,
+        tilt: (Math.random() - 0.5) * 0.6,
+      })),
+    [count, radius, spread]
+  );
+
+  useFrame((state) => {
+    const t = state.clock.getElapsedTime();
+    params.forEach((p, i) => {
+      const x = Math.cos(t * p.speed + p.phase) * p.r;
+      const y = Math.sin(t * p.speed + p.phase * 0.5) * (p.r * 0.2);
+      const z = Math.sin(t * p.speed + p.phase) * p.r;
+      dummy.position.set(x, y, z);
+      dummy.rotation.set(t * p.speed, t * p.speed * 0.8, 0);
+      dummy.scale.set(p.size, p.size, p.size);
+      dummy.updateMatrix();
+      meshRef.current.setMatrixAt(i, dummy.matrix);
+    });
+    meshRef.current.instanceMatrix.needsUpdate = true;
+  });
+
+  return (
+    <instancedMesh ref={meshRef} args={[undefined as any, undefined as any, count]}>
+      <dodecahedronGeometry args={[1, 0]} />
+      <meshStandardMaterial color="#cfd9ff" roughness={0.6} metalness={0.2} />
+    </instancedMesh>
+  );
+}
+
+function RotatingSpace(): JSX.Element {
+  const rotatingRef = useRef<THREE.Group>(null!);
+  useFrame((_, delta) => {
+    if (rotatingRef.current) rotatingRef.current.rotation.y += delta * 0.05;
+  });
+
+  return (
+    <group ref={rotatingRef}>
+      <ParallaxRig />
+      <Satellite radius={4.2} speed={0.5} size={0.22} phase={0} />
+      <Satellite radius={5.2} speed={0.35} size={0.18} phase={1.2} />
+      <Satellite radius={6.0} speed={0.28} size={0.16} phase={2.4} />
+      <AsteroidField count={100} />
+      <AsteroidField count={100} />
+      <Sparkles size={1.8} scale={[40, 40, 40]} speed={0.5} count={1800} opacity={1} />
+      <Stars radius={280} depth={80} count={16000} factor={6} saturation={0} fade />
+    </group>
+  );
+}
+
+function SpaceScene(): JSX.Element {
+  return (
+    <div className="absolute inset-0 z-0 overflow-hidden">
+      <Canvas
+        style={{ position: 'fixed', top: 0, left: 0, width: '100vw', height: '100vh', zIndex: 0 }}
+        dpr={Math.min(window.devicePixelRatio, 2)}
+        camera={{ position: [0, 0, 8], fov: 50 }}
+        gl={{ antialias: true, alpha: true, powerPreference: 'high-performance' }}
+        onCreated={({ gl }) => {
+          gl.setClearColor('#000000', 0);
+        }}
+      >
+        <AdaptiveDpr pixelated={false} />
+        <ambientLight intensity={0.35} />
+        <directionalLight position={[6, 8, 5]} intensity={1.2} castShadow />
+        <pointLight position={[-6, -4, -4]} intensity={0.5} />
+        <RotatingSpace />
+        <AdaptiveDpr pixelated />
+        <Preload all />
+      </Canvas>
+    </div>
+  );
+}
+
+// React Components for Each Page
+// ----------------------------------------------------------------------------------------------------
+
+function Navbar({ currentPage, onNavClick }: NavbarProps): JSX.Element {
+  const navItems = ['Home', 'About', 'Objectives', 'Events', 'Activities', 'Guests', 'Gallery'];
+  return (
+    <nav className="fixed top-0 left-0 right-0 z-50 py-4 px-6 md:px-12 backdrop-filter backdrop-blur-md bg-white/10 rounded-full my-6 mx-4 md:mx-auto max-w-7xl flex items-center justify-between shadow-lg">
+      <div className="text-xl font-bold text-white tracking-wider">COSMOCON</div>
+      <ul className="hidden md:flex space-x-8">
+        {navItems.map((page) => (
+          <li key={page}>
+            <a
+              href={`#${page.toLowerCase()}`}
+              className={`nav-link text-white/70 hover:text-white transition duration-300 relative group ${currentPage === page.toLowerCase() ? 'active text-white' : ''}`}
+              onClick={() => onNavClick(page.toLowerCase())}
+            >
+              {page}
+              <span className={`absolute bottom-0 left-0 w-0 h-0.5 bg-cyan-400 group-hover:w-full transition-all duration-300 ${currentPage === page.toLowerCase() ? 'w-full' : ''}`} />
+            </a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+  );
+}
+
+function Countdown(): JSX.Element {
+  const [countdown, setCountdown] = useState({ days: '00', hours: '00', minutes: '00', seconds: '00' });
+  const targetDate = useMemo(() => new Date('October 09, 2025 09:00:00').getTime(), []);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      const now = new Date().getTime();
+      const distance = targetDate - now;
+
+      if (distance < 0) {
+        clearInterval(interval);
+        setCountdown({ days: '00', hours: '00', minutes: '00', seconds: '00' });
+        return;
+      }
+
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      setCountdown({
+        days: days.toString().padStart(2, '0'),
+        hours: hours.toString().padStart(2, '0'),
+        minutes: minutes.toString().padStart(2, '0'),
+        seconds: seconds.toString().padStart(2, '0'),
+      });
+    }, 1000);
+
+    return () => clearInterval(interval);
+  }, [targetDate]);
+
+  const countdownItems = [
+    { label: 'Days', value: countdown.days },
+    { label: 'Hours', value: countdown.hours },
+    { label: 'Minutes', value: countdown.minutes },
+    { label: 'Seconds', value: countdown.seconds },
+  ];
+
+  return (
+    <div className="flex space-x-4 md:space-x-8 lg:space-x-12 mt-8 md:mt-12 justify-center">
+      {countdownItems.map((item, index) => (
+        <div key={index} className="flex flex-col items-center justify-center p-4 md:p-6 rounded-xl bg-white/5 backdrop-blur-sm border border-white/10 shadow-lg min-w-[70px] md:min-w-[100px]">
+          <span className="text-3xl md:text-5xl lg:text-6xl font-bold text-cyan-400 font-mono">{item.value}</span>
+          <span className="text-xs md:text-sm text-white/70 mt-2">{item.label}</span>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+function Home({ active }: SectionProps): JSX.Element {
+  return (
+    <section id="home" className={`page ${active ? 'active' : ''} min-h-screen flex items-center justify-center text-center p-4 transition-all duration-500 ease-in-out`}>
+      <div className={`flex flex-col items-center justify-center transition-all duration-700 ease-out ${active ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-8'}`}>
+        <div className="text-white">
+          <h1 className="text-5xl md:text-7xl lg:text-9xl font-extrabold tracking-tight">
+            <span className="bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-fuchsia-600">COSMOCON</span>
+            <span className="text-2xl md:text-4xl lg:text-6xl font-thin tracking-wide ml-2">2025</span>
+          </h1>
+          <p className="text-lg md:text-xl lg:text-2xl mt-4 font-light text-white/90">Space Technology Conference</p>
+        </div>
+        <Countdown />
+        <div className="flex space-x-4 md:space-x-6 mt-8">
+          <button className="relative overflow-hidden bg-white/10 backdrop-blur-md px-6 py-3 rounded-full text-white text-lg font-semibold hover:bg-white/20 transition-all duration-300 group">
+            <span className="relative z-10">Register Now</span>
+            <div className="absolute inset-0 z-0 bg-gradient-to-r from-cyan-500 to-fuchsia-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+          </button>
+          <button className="relative overflow-hidden bg-white/10 backdrop-blur-md px-6 py-3 rounded-full text-white text-lg font-semibold hover:bg-white/20 transition-all duration-300 group">
+            <span className="relative z-10">View Venue</span>
+            <div className="absolute inset-0 z-0 bg-gradient-to-r from-cyan-500 to-fuchsia-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+          </button>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+export function About({ active }: SectionProps): JSX.Element {
+  return (
+    <section id="about" className={`page min-h-screen flex flex-col items-center justify-center p-8 md:p-16 transition-all duration-500 ease-in-out ${active ? 'active' : ''}`}>
+      <div className={`container mx-auto max-w-6xl transition-all duration-700 delay-100 ease-out ${active ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-8'}`}>
+        <h2 className="text-4xl md:text-5xl font-bold text-center mb-12 bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-fuchsia-600">About COSMOCON</h2>
+        <div className="flex flex-col lg:flex-row items-center space-y-8 lg:space-y-0 lg:space-x-12">
+          <div className="w-full lg:w-1/2 p-6 rounded-3xl bg-white/5 backdrop-blur-sm border border-white/10 shadow-xl">
+            <div className="text-white">
+              <p className="mb-4 text-white/80 leading-relaxed">COSMOCON is the premier space technology conference bringing together leading experts, researchers, and innovators from around the globe. Join us for three days of groundbreaking presentations, hands-on workshops, and networking opportunities.</p>
+              <p className="text-white/80 leading-relaxed">Explore the latest developments in space exploration, satellite technology, and commercial spaceflight while connecting with industry pioneers and future space technologists.</p>
+            </div>
+          </div>
+          <div className="w-full lg:w-1/2 grid grid-cols-1 md:grid-cols-2 gap-6">
+            <HighlightCard icon="🚀" title="World-Class Speakers" description="Leading experts from NASA, ESA, SpaceX, and top universities" />
+            <HighlightCard icon="🛠️" title="Technical Workshops" description="Hands-on sessions on satellite design, mission planning, and more" />
+            <HighlightCard icon="🌐" title="Networking Opportunities" description="Connect with professionals from global space organizations" />
+            <HighlightCard icon="💡" title="Innovation Showcase" description="Latest technologies and breakthrough research presentations" />
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function HighlightCard({ icon, title, description }: HighlightCardProps): JSX.Element {
+  return (
+    <div className="p-6 rounded-2xl bg-white/5 backdrop-blur-sm border border-white/10 shadow-md flex flex-col items-start space-y-3 transform hover:scale-105 transition-transform duration-300">
+      <div className="text-4xl">{icon}</div>
+      <h4 className="text-xl font-semibold text-white">{title}</h4>
+      <p className="text-sm text-white/70">{description}</p>
+    </div>
+  );
+}
+
+function Objectives({ active }: SectionProps): JSX.Element {
+  
+}
+
+
+
+function Activities({ active }: SectionProps): JSX.Element {
+  const activities: ActivityItem[] = [
+    { title: 'Gaming Lounge', description: 'Relax and unwind with space-themed video games and VR experiences.' },
+    { title: 'Cosmic Trivia Night', description: 'Test your knowledge of the universe and win exciting prizes.' },
+    { title: 'Stargazing Session', description: 'Join us for a guided tour of the night sky with professional telescopes.' },
+    { title: 'Hackathon', description: '24-hour hackathon to build the next generation of space applications.' },
+  ];
+
+  return (
+    <section id="non-technical" className={`page min-h-screen flex flex-col items-center justify-center p-8 md:p-16 transition-all duration-500 ease-in-out ${active ? 'active' : ''}`}>
+      <div className={`container mx-auto max-w-5xl transition-all duration-700 delay-100 ease-out ${active ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-8'}`}>
+        <h2 className="text-4xl md:text-5xl font-bold text-center mb-12 bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-fuchsia-600">Non-Technical Activities</h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {activities.map((activity, index) => (
+            <div key={index} className="p-6 rounded-2xl bg-white/5 backdrop-blur-sm border border-white/10 shadow-md transform hover:scale-105 transition-transform duration-300">
+              <h3 className="text-xl font-semibold text-white mb-2">{activity.title}</h3>
+              <p className="text-white/70">{activity.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function Guests({ active }: SectionProps): JSX.Element {
+  
+}
+
+function Gallery({ active }: SectionProps): JSX.Element {
+  
+}
+
+// Main App Component
+// ----------------------------------------------------------------------------------------------------
+
+export default function Info(): JSX.Element {
+  const [currentPage, setCurrentPage] = useState<string>('home');
+
+  return (
+    <div className="relative w-screen min-h-screen font-sans bg-[#1a1b1e] text-white">
+      <Navbar currentPage={currentPage} onNavClick={setCurrentPage} />
+      <main className="relative z-10 pt-32 pb-16">
+        {currentPage === 'home' && <Home active={true} />}
+        {currentPage === 'about' && <About active={true} />}
+        {currentPage === 'objectives' && <Objectives active={true} />}
+        {currentPage === 'events' && <Events active={true} />}
+        {currentPage === 'activities' && <Activities active={true} />}
+        {currentPage === 'guests' && <Guests active={true} />}
+        {currentPage === 'gallery' && <Gallery active={true} />}
+      </main>
+    </div>
+  );
+}
