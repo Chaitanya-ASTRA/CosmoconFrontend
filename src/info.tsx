@@ -65,7 +65,7 @@ function Info({ active = true }: SectionProps) {
         <div> 
             <section id="about" className={`page min-h-screen flex flex-col items-center justify-center p-4 md:p-16 transition-all duration-500 ease-in-out ${active ? 'active' : ''}`}>
       <div className={`container mx-auto max-w-6xl transition-all duration-700 delay-100 ease-out ${active ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-8'}`}>
-        <h2 className="text-3xl md:text-5xl font-bold text-center mb-12 text-white">About COSMOCON</h2>
+        <h2 className="text-3xl md:text-5xl font-bold text-center mb-12 text-white">ABOUT COSMOCON</h2>
         <div className="flex flex-col lg:flex-row items-center space-y-8 lg:space-y-0 lg:space-x-12">
           <div className="w-full lg:w-1/2 about-cosmo-box">
             <div className="text-white">
