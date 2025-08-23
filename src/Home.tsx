@@ -40,7 +40,7 @@ function Model() {
       // Smoothly tilt x-rotation to a positive value (e.g., 0.1 for a slight front tilt)
       ref.current.rotation.x = THREE.MathUtils.lerp(
         ref.current.rotation.x,
-        0.4, // Target slight tilt towards front
+        0.25, // Target slight tilt towards front
         0.02 // Smoothing factor
       );
       // Start continuous rotation
