@@ -1,5 +1,4 @@
-import React, { useState } from 'react';
-import NavBar from './NavBar';
+import { useState } from 'react';
 
 // Define the type for the objective items for better code clarity and type safety
 interface ObjectiveItem {
@@ -11,7 +10,7 @@ interface ObjectiveItem {
 function Objectives() {
   // 'active' state controls the animation. For this standalone component,
   // it's set to true to ensure the content is always visible.
-  const [active, setActive] = useState(true); 
+  const [active] = useState(true); 
   
   // Data for the different objectives
   const objectives: ObjectiveItem[] = [

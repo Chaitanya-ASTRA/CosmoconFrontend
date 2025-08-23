@@ -1,31 +1,17 @@
-import { BackgroundBeams } from './components/ui/backgroundBeams';
 interface TimelineEvent {
   time: string;
   title: string;
   details: string[];
 }
 
-import React, { useState, useEffect } from 'react';
-import NavBar from './NavBar';
-import { useSwipeable } from 'react-swipeable';
+import  { useState} from 'react';
 import BackgroundBeam from "./BackgroundBeam"; // Import BackgroundBeam
 
 
-const backgrounds = [
-  "linear-gradient(135deg, #0f2027, #203a43, #2c5364)",
-  "radial-gradient(circle at top, #ff9a9e, #fad0c4)",
-  "linear-gradient(45deg, #00c6ff, #0072ff)",
-  "linear-gradient(120deg, #ff6a00, #ee0979)"
-];
- 
-function Event() {
-  const [active, setActive] = useState(true);
-  const [index, setIndex] = useState(0);
 
-  const handlers = useSwipeable({
-    onSwipedLeft: () => setIndex((i) => (i + 1) % backgrounds.length),
-    onSwipedRight: () => setIndex((i) => (i - 1 + backgrounds.length) % backgrounds.length),
-  });
+function Event() {
+  const [active] = useState(true);
+
   const timelineEvents: TimelineEvent[] = [
     { time: 'Day 1', title: 'Inauguration & Immersion', details: ['Grand Opening Ceremony with VIP dignitaries.','Keynote addresses from leading scientists.','Workshop Kickoff: Rocketry, CubeSat Hackathon, Rover & Robotic Arm.','Non-technical competitions.'] },
     { time: 'Day 2', title: 'Workshop Deep-Dives & Cultural Engagement', details: ['Technical workshops continue','Cultural Evening with DJ and student performances.'] },
