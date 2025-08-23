@@ -57,23 +57,30 @@ function HighlightCard({ icon, imgSrc, imgAlt, title, description, learnMoreLink
                  perspective-1000"
     >
       {/* Icon or Image */}
-      <div className="w-16 h-16 flex items-center justify-center mb-2">
-        {imgSrc ? (
-          <img src={imgSrc} alt={imgAlt} style={{ width: 56, height: 56, objectFit: 'contain' }} />
-        ) : (
-          <span className="text-4xl">{icon}</span>
-        )}
-      </div>
-      <h4 className="text-xl font-semibold text-white">{title}</h4>
-      <p className="text-sm text-white/70">{description}</p>
-      <a 
-        href={learnMoreLink}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="text-blue-400 hover:text-blue-300 text-sm font-medium transition-colors duration-200 hover:underline cursor-pointer"
-      >
-        Learn More →
-      </a>
+     <div className="flex flex-col justify-between h-full p-4 bg-[#0B0F1A] rounded-lg shadow-lg">
+  {/* Top content */}
+  <div>
+    <div className="w-16 h-16 flex items-center justify-center mb-2">
+      {imgSrc ? (
+        <img src={imgSrc} alt={imgAlt} style={{ width: 56, height: 56, objectFit: 'contain' }} />
+      ) : (
+        <span className="text-4xl">{icon}</span>
+      )}
+    </div>
+    <h4 className="text-xl font-semibold text-white">{title}</h4>
+    <p className="text-sm text-white/70">{description}</p>
+  </div>
+
+  {/* Bottom anchor */}
+  <a 
+    href={learnMoreLink}
+    target="_blank"
+    rel="noopener noreferrer"
+    className="text-blue-400 hover:text-blue-300 text-sm font-medium transition-colors duration-200 hover:underline cursor-pointer mt-4"
+  >
+    Learn More →
+  </a>
+</div>
     </div>
   );
 }

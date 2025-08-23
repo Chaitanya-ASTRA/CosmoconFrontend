@@ -1,218 +1,5 @@
 import './Home.css';
-// import {useMemo, useRef} from "react";
-// import { Canvas, useFrame, useThree } from "@react-three/fiber";
-// import { Stars, Float, Sparkles, Preload, AdaptiveDpr } from "@react-three/drei";
-// import * as THREE from "three";
-// import NavBar from "./NavBar";
-// import { Link } from "react-router-dom";
-
-
-
-
-
-// function ParallaxRig() {
-//   const { camera, mouse } = useThree();
-//   const target = useRef(new THREE.Vector3());
-//   useFrame(() => {
-//     target.current.set(mouse.x * 0.5, mouse.y * 0.3, camera.position.z);
-//     camera.position.lerp(target.current, 0.03);
-//     camera.lookAt(0, 0, 0);
-//   });
-//   return null;
-// }
-
-// function Planet() {
-//   const planetRef = useRef<THREE.Mesh>(null!);
-//   useFrame((_, delta) => {
-//     planetRef.current.rotation.y += delta * 0.15;
-//   });
-//   return (
-//     <Float speed={1} rotationIntensity={0.3} floatIntensity={0.6}>
-//       <mesh ref={planetRef} castShadow receiveShadow position={[0, 0, 0]}>
-//         <icosahedronGeometry args={[2.2, 5]} />
-//         <meshStandardMaterial color="#C8D6FF" roughness={0.6} metalness={0.15} />
-//       </mesh>
-//       {/* Planet ring */}
-//       <mesh rotation={[Math.PI / 2.2, 0, 0]}>
-//         <ringGeometry args={[2.6, 3.2, 64]} />
-//         <meshBasicMaterial color="#7FB8FF" opacity={0.25} transparent />
-//       </mesh>
-//     </Float>
-//   );
-// }
-
-// type SatelliteProps = { radius?: number; speed?: number; size?: number; phase?: number };
-// function Satellite({ radius = 4.2, speed = 0.5, size = 0.22, phase = 0 }: SatelliteProps) {
-//   const ref = useRef<THREE.Mesh>(null!);
-//   const hover = useRef(false);
-//   useFrame((state) => {
-//     const t = state.clock.getElapsedTime() * speed + phase;
-//     const x = Math.cos(t) * radius;
-//     const z = Math.sin(t) * radius;
-//     const y = Math.sin(t * 1.8) * 0.4;
-//     ref.current.position.set(x, y, z);
-//     const s = hover.current ? size * 1.8 : size;
-//     ref.current.scale.setScalar(THREE.MathUtils.lerp(ref.current.scale.x, s, 0.2));
-//     ref.current.rotation.x += 0.02;
-//     ref.current.rotation.y += 0.02;
-//   });
-//   return (
-//     <mesh
-//       ref={ref}
-//       onPointerOver={() => (hover.current = true)}
-//       onPointerOut={() => (hover.current = false)}
-//       castShadow
-//     >
-//       <icosahedronGeometry args={[1, 0]} />
-//       <meshStandardMaterial color="#ffffff" metalness={0.6} roughness={0.25} />
-//     </mesh>
-//   );
-// }
-
-// function SpaceScene() {
-//   const starProps = useMemo(() => ({ radius: 280, depth: 80, count: 16000, factor: 6, saturation: 0 }), []);
-
-//   function RotatingSpace() {
-//     const rotatingRef = useRef<THREE.Group>(null!);
-//     useFrame((_, delta) => {
-//       if (rotatingRef.current) rotatingRef.current.rotation.y += delta * 0.05;
-//     });
-
-//     function AsteroidField({ count = 120, radius = 10, spread = 10 }) {
-//       const meshRef = useRef<THREE.InstancedMesh>(null!);
-//       const dummy = useMemo(() => new THREE.Object3D(), []);
-//       const params = useMemo(
-//         () =>
-//           Array.from({ length: count }).map(() => ({
-//             r: radius + Math.random() * spread,
-//             speed: 0.05 + Math.random() * 0.25,
-//             size: 0.08 + Math.random() * 0.22,
-//             phase: Math.random() * Math.PI * 2,
-//             tilt: (Math.random() - 0.5) * 0.6
-//           })),
-//         [count, radius, spread]
-//       );
-
-//       useFrame((state) => {
-//         const t = state.clock.getElapsedTime();
-//         params.forEach((p, i) => {
-//           const x = Math.cos(t * p.speed + p.phase) * p.r;
-//           const y = Math.sin(t * p.speed + p.phase * 0.5) * (p.r * 0.2);
-//           const z = Math.sin(t * p.speed + p.phase) * p.r;
-//           dummy.position.set(x, y, z);
-//           dummy.rotation.set(t * p.speed, t * p.speed * 0.8, 0);
-//           dummy.scale.set(p.size, p.size, p.size);
-//           dummy.updateMatrix();
-//           meshRef.current.setMatrixAt(i, dummy.matrix);
-//         });
-//         meshRef.current.instanceMatrix.needsUpdate = true;
-//       });
-
-//       return (
-//         <instancedMesh ref={meshRef} args={[undefined as any, undefined as any, count]}>
-//           <dodecahedronGeometry args={[1, 0]} />
-//           <meshStandardMaterial color="#cfd9ff" roughness={0.6} metalness={0.2} />
-//         </instancedMesh>
-//       );
-//     }
-
-//     return (
-//       <group ref={rotatingRef}>
-//         <ParallaxRig />
-//         {/* <Planet /> */}
-//         <Satellite radius={4.2} speed={0.5} size={0.22} phase={0} />
-//         <Satellite radius={5.2} speed={0.35} size={0.18} phase={1.2} />
-//         <Satellite radius={6.0} speed={0.28} size={0.16} phase={2.4} />
-//         <AsteroidField count={160} />
-//         <AsteroidField count={100} />
-//         <Sparkles size={1.8} scale={[40, 40, 40]} speed={0.5} count={1800} opacity={1} />
-//         <Stars {...starProps} fade />
-//       </group>
-//     );
-//   }
-
-//   return (
-//     <Canvas
-//   style={{ position: "fixed", top: 0, left: 0, width: "100vw", height: "100vh", zIndex: 0 }}
-//   dpr={Math.min(window.devicePixelRatio, 2)}
-//   camera={{ position: [0, 0, 8], fov: 50 }}
-//   gl={{ antialias: true, alpha: true, powerPreference: "high-performance" }} // alpha back to true
-//   onCreated={({ gl }) => {
-//     gl.setClearColor("#000000", 0); // transparent black
-//   }}
-// >
-
-
-
-
-//     <AdaptiveDpr pixelated={false} />
-
-
-//       <ambientLight intensity={0.35} />
-//       <directionalLight position={[6, 8, 5]} intensity={1.2} castShadow />
-//       <pointLight position={[-6, -4, -4]} intensity={0.5} />
-
-//       <RotatingSpace />
-
-//       <AdaptiveDpr pixelated />
-//       <Preload all />
-//     </Canvas>
-//   );
-// }
-
-// export default function Home() {
-//   return (
-//     <div className="relative  h-screen overflow-hidden overflow-y-hidden">
-//       {/* Background (Canvas on top to capture mouse) */}
-
-//       <NavBar />
-//       <div className="absolute inset-0 z-0">
-//         <SpaceScene />
-//       </div>
-
-//       {/* Foreground Content */}
-//       <div className="absolute inset-0 z-10 flex flex-col items-center justify-center text-center text-white px-4 pointer-events-none">
-
-//         {/* Title */}
-//         <h1 className="text-6xl md:text-9xl font-extrabold tracking-wider drop-shadow-lg">
-//           COSMOCON
-//         </h1>
-
-//         {/* Year */}
-//         <h2 className="text-2xl md:text-3xl mt-2 text-blue-300 font-semibold">
-//           2025
-//         </h2>
-
-//         {/* Subtitle */}
-//         <p className="mt-4 text-lg md:text-xl text-gray-300 max-w-2xl">
-//           The Ultimate Space Technology Conference — Explore the Future Beyond Earth 🚀
-//         </p>
-
-//         {/* Countdown */}
-//         <div className="mt-6 flex space-x-4 text-lg md:text-2xl font-mono text-blue-200">
-//           <span>00h</span>
-//           <span>00m</span>
-//           <span>00s</span>
-//         </div>
-
-//         {/* Buttons (re-enable clicks) */}
-//         <div className="mt-8 flex space-x-6 pointer-events-auto">
-//             <Link to="/register">
-//           <button className="px-6 py-3 rounded-2xl bg-blue-600 hover:bg-blue-500 active:scale-95 transition-all duration-200 font-semibold shadow-lg hover:shadow-blue-400/50">
-//             Register
-//           </button>
-//           </Link>
-//           <button className="px-6 py-3 rounded-2xl border border-blue-400 text-blue-300 hover:bg-blue-500/20 active:scale-95 transition-all duration-200 font-semibold shadow-lg hover:shadow-blue-400/30">
-//             View Venue
-//           </button>
-//         </div>
-//       </div>
-//     </div>
-//   );
-// }
-
-import React from "react";
-import { Canvas, useThree } from "@react-three/fiber";
+import { Canvas,useThree } from "@react-three/fiber";
 import { useGLTF } from "@react-three/drei";
 import { useState, useRef, useEffect } from "react";
 import { useFrame } from "@react-three/fiber";
@@ -225,86 +12,109 @@ import astraimg from "./astrafull.png";
 import CountdownTimer from "./CountdownTimer"; // Import the new component
 import Logos from "./Logos";
 import { Instagram, Linkedin, Mail } from 'lucide-react'; // Import lucide-react icons
+import Gallery from "./Gallery"; // Import Gallery component
 
+// Removed InteractiveModel component as its logic is now merged into Model.
 
 function Model() {
   const { scene } = useGLTF("/models/scene.gltf");
-
   const ref = useRef<THREE.Object3D>(null);
+  const { viewport } = useThree();
+  const [startTime] = useState(() => Date.now());
+
+  const scale = viewport.width < 5 ? 1 : 1.7;
+
+  useEffect(() => {
+    if (ref.current) {
+      ref.current.rotation.x = 0; // Set initial x-rotation to 0
+      ref.current.rotation.y = 0; // Set initial y-rotation to 0
+    }
+  }, [ref]);
 
   useFrame(() => {
     if (!ref.current) return;
-    
-    // Set fixed orientation (you can adjust these values)
-    ref.current.rotation.x = 0.1; // Fixed X rotation (tilt forward)
-    ref.current.rotation.z = 0.1; // Fixed Z rotation (slight roll)
-    
-    // Only rotate around Y axis (spinning)
-    ref.current.rotation.y += 0.006; // Adjust speed here (0.01 = slow, 0.05 = medium, 0.1 = fast)
+    const elapsed = (Date.now() - startTime) / 1000; // seconds
+
+    if (elapsed >= 2) {
+      // After 2 seconds, start the animation
+      // Smoothly tilt x-rotation to a positive value (e.g., 0.1 for a slight front tilt)
+      ref.current.rotation.x = THREE.MathUtils.lerp(
+        ref.current.rotation.x,
+        0.2, // Target slight tilt towards front
+        0.02 // Smoothing factor
+      );
+      // Start continuous rotation
+      ref.current.rotation.y += 0.01; // Continuous rotation speed
+    }
   });
 
-  return <primitive ref={ref} object={scene} scale={1.7} position={[0, -1.0, 0]} />;
+  return (
+    <primitive
+      ref={ref}
+      object={scene}
+      scale={scale}
+      position={[0, -1.0, 0]}
+    />
+  );
 }
+
 const Home = () => {
-  const [showText, setShowText] = useState(true); // Show immediately, let CSS animation handle fade-in
+  const [showText, setShowText] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setShowText(true);
+    }, 2000);
+    return () => clearTimeout(timer);
+  }, []);
 
   return (
     <div id="home"> {/* Added id="home" for navigation */}
       {showText && (<>
         <NavBar />
-        <Logos /></>)}
+        <Logos />
+      </>)}
 
 
       <div className="w-full">
         {/* First Page (Canvas Section) */}
-        <section className="relative h-screen w-full overflow-hidden">
+        <section className="relative h-screen w-full">
           <Canvas
-            style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%", zIndex: 1, pointerEvents: "auto" }}
+            style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%", zIndex: 10, pointerEvents: "auto" }}
             dpr={Math.min(window.devicePixelRatio, 2)}
             camera={{ position: [0, 0, 8], fov: 50 }}
             gl={{ antialias: true, alpha: true, powerPreference: "high-performance" }}
             onCreated={({ gl }) => {
               gl.setClearColor("#000000", 0);
             }}
+            eventSource={document.body} // Re-added this for robust event capturing
           >
-                         <ambientLight intensity={0.5} />
-             <directionalLight position={[5, 5, 5]} intensity={1} />
-             <Model />
+            <ambientLight intensity={0.5} />
+            <directionalLight position={[5, 5, 5]} intensity={1} />
+            <Model /> {/* Model now handles its own interaction and animation */}
           </Canvas>
 
-                                           {/* Overlay Text */}
-            {showText && (
-              <div className="absolute inset-0 flex flex-col justify-center items-center z-50 pointer-events-none">
-                <h1 className="cosmo-text">COSMOCON</h1>
-                <h1 className="cosmo-text year">2025</h1>
-                <CountdownTimer targetDate="2025-08-27T00:00:00" />
+          {/* Overlay Text */}
+          {showText && (
+            <div className="absolute inset-0 flex flex-col justify-center items-center z-20 pointer-events-none">
+              <h1 className="cosmo-text">COSMOCON</h1>
+              <h1 className="cosmo-text year">2025</h1>
+              <div className="z-40 md:block mt-4 pointer-events-auto">
+                <a
+                  href="https://cosmocon2025.fillout.com/register"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-6 py-3  bg-amber-500 hover:bg-amber-400 text-black font-bold text-base md:text-lg rounded-lg transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:shadow-amber-300/50"
+                >
+                  Register Now
+                </a>
               </div>
-            )}
+              <CountdownTimer targetDate="2025-08-27T00:00:00" />
+            </div>
+          )}
 
-                         {/* Register Button - Fixed Top Right */}
-             <div className="fixed top-4 right-4 md:right-52 z-40 md:block">
-               <a 
-                 href="https://cosmocon2025.fillout.com/register" 
-                 target="_blank" 
-                 rel="noopener noreferrer"
-                 className="px-6 py-3 bg-amber-500 hover:bg-amber-400 text-black font-bold text-base md:text-lg rounded-lg transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:shadow-amber-300/50"
-               >
-                 Register Now
-               </a>
-             </div>
-
-             {/* Register Button - Mobile Top Center */}
-             <div className="fixed top-4 left-1/2 transform -translate-x-1/2 z-40 md:hidden">
-               <a 
-                 href="https://cosmocon2025.fillout.com/register" 
-                 target="_blank" 
-                 rel="noopener noreferrer"
-                 className="px-6 py-3 bg-amber-500 hover:bg-amber-400 text-black font-bold text-base rounded-lg transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:shadow-amber-300/50"
-               >
-                 Register Now
-               </a>
-             </div>
         </section>
+
 
         <section className="w-full bg-[#0B0F1A] text-white py-10">
           <div className="w-full">
@@ -323,6 +133,8 @@ const Home = () => {
             <Event />
           </div>
         </section>
+
+
         <footer className="w-full bg-black text-white py-10">
           <div className="container mx-auto px-4 flex flex-col md:flex-row items-center md:justify-around space-y-6 md:space-y-0">
 
@@ -341,23 +153,23 @@ const Home = () => {
               <div className="flex flex-col items-center  space-y-4">
 
                 {/* Instagram */}
-                <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer"
+                <a href="https://www.instagram.com/chaitanyaastra" target="_blank" rel="noopener noreferrer"
                    className="flex items-center space-x-3 text-gray-300 hover:text-white transition-all duration-300 transform hover:-translate-y-1">
                   <Instagram size={28} className="text-purple-400 group-hover:text-white" />
                   <span className="text-lg">Instagram</span>
                 </a>
 
                 {/* LinkedIn */}
-                <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer"
+                <a href="https://www.linkedin.com/company/chaitanya-astra-cbit/" target="_blank" rel="noopener noreferrer"
                    className="flex items-center space-x-3 text-gray-300 hover:text-white transition-all duration-300 transform hover:-translate-y-1">
                   <Linkedin size={28} className="text-blue-400 group-hover:text-white" />
                   <span className="text-lg">LinkedIn</span>
                 </a>
 
                 {/* Mail */}
-                <a href="mailto:info@cosmocon.com" className="flex items-center space-x-3 text-gray-300 hover:text-white transition-all duration-300 transform hover:-translate-y-1">
+                <a href="mailto:chaitanyaastra_cc@cbit.ac.in" className="flex items-center space-x-3 text-gray-300 hover:text-white transition-all duration-300 transform hover:-translate-y-1">
                   <Mail size={28} className="text-red-400 group-hover:text-white" />
-                  <span className="text-lg">info@cosmocon.com</span>
+                  <span className="text-lg">chaitanyaastra_cc@cbit.ac.in</span>
                 </a>
               </div>
             </div>
@@ -367,6 +179,45 @@ const Home = () => {
 
       </div>
     </div>
-  )
+  );
+};
+
+// New RegisterButton component to handle scroll-based positioning
+const RegisterButton = () => {
+  const [scrolledDown, setScrolledDown] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 100) { // Adjust threshold as needed
+        setScrolledDown(true);
+      } else {
+        setScrolledDown(false);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
+  const buttonClasses = `
+    fixed z-40 md:hidden 
+    px-6 py-3 bg-amber-500 hover:bg-amber-400 text-black font-bold 
+    text-base rounded-lg transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:shadow-amber-300/50
+    ${scrolledDown ? 'top-4 right-4 -translate-x-0' : 'top-4 left-1/2 -translate-x-1/2'}
+  `;
+
+  return (
+    <div className={buttonClasses}>
+      <a
+        href="https://cosmocon2025.fillout.com/register"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Register Now
+      </a>
+    </div>
+  );
 };
 export default Home;

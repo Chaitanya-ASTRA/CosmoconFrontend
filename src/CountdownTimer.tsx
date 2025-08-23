@@ -40,12 +40,12 @@ const CountdownTimer: React.FC<CountdownProps> = ({ targetDate }) => {
 
     timerComponents.push(
       <div key={interval} className="flex flex-col items-center">
-        <div className="bg-gray-800/80 backdrop-blur-sm border border-gray-600/60 rounded-lg px-4 py-3 min-w-[80px] text-center">
+        <div className="bg-gray-800/80 backdrop-blur-sm border border-gray-200/60 rounded-lg px-4 py-3 min-w-[80px] text-center">
           <div className="text-gray-200 text-2xl md:text-4xl font-mono font-bold">
             {value.toString().padStart(2, '0')}
           </div>
         </div>
-        <div className="text-gray-400 text-sm md:text-base mt-2 font-medium uppercase tracking-wider">
+        <div className="text-shadow-white font-extralight text-sm md:text-base mt-2 font-medium uppercase tracking-wider">
           {interval}
         </div>
       </div>
