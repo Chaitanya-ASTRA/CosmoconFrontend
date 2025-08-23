@@ -47,7 +47,7 @@ const CountdownTimer: React.FC<CountdownProps> = ({ targetDate }) => {
             {value.toString().padStart(2, '0')}
           </div>
         </div>
-        <div className="text-shadow-white font-extralight text-sm md:text-base mt-2 uppercase tracking-wider">
+        <div className="text-shadow-white sm:text-white md:font-extralight text-white md:text-black text-sm md:text-base mt-2 uppercase tracking-wider">
           {unit}
         </div>
       </div>

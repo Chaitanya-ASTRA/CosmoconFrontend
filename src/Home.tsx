@@ -22,6 +22,7 @@ function Model() {
   const [startTime] = useState(() => Date.now());
 
   const scale = viewport.width < 5 ? 1.2 : 1.7;
+  const position = viewport.width < 5 ? [0, 1.2, 0] : [0, -1.0, 0];
 
   useEffect(() => {
     if (ref.current) {
@@ -52,7 +53,7 @@ function Model() {
       ref={ref}
       object={scene}
       scale={scale}
-      position={[0, 1.24, 0]}
+      position={position}
     />
   );
 }
