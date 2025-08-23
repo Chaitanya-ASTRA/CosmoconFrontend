@@ -18,7 +18,7 @@ function App() {
     },
     {
       path:'/about',
-      element:<Info/>
+      element:<Info active={true}/>
     },
     {
       path:'/objectives',
