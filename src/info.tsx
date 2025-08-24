@@ -95,7 +95,7 @@ function Info({ active = true }: SectionProps) {
               imgAlt="Rover & Robotics"
               title="Rover & Robotics" 
               description="Assemble and program rovers and robotic arms" 
-              learnMoreLink=""
+              learnMoreLink="https://drive.google.com/file/d/1PXH98u2nG2zqoNX2nd8fNNoo1N1jsXWm/view?usp=sharing"
             />
             <HighlightCard 
               icon="🎭" 
