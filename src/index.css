@@ -1,7 +1,6 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
-@custom-variant dark (&:is(.dark *));
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -53,6 +52,7 @@ html, body {
   height: 100%;
   overflow-x: hidden;
   overflow-y: auto;
+  scroll-behavior: smooth;
 }
 
 body {
@@ -108,19 +108,18 @@ button:focus-visible {
 
 /* Apply to the whole page */
 body {
-  scrollbar-width: thin; /* Firefox */
-  scrollbar-color: #fff transparent; /* Firefox */
+  /* scrollbar-width: thin; /* Firefox */
+  /* scrollbar-color: #fff transparent; /* Firefox */
 }
 
 /* Chrome, Edge, Safari */
 body::-webkit-scrollbar {
-  width: 12px;
+  width: 0px;
 }
 
 body::-webkit-scrollbar-track {
   background: black; /* track color */
   border-radius: 10px;
-  background-image: url('https://img.freepik.com/free-vector/3d-metal-star-isolated_1308-117760.jpg?semt=ais_hybrid&w=740&q=80'); /* small star icon */
   background-repeat: repeat;
   background-size: 8px 8px;
 }
@@ -131,7 +130,7 @@ body::-webkit-scrollbar-thumb {
   border: 3px solid black; /* spacing inside track */
 }
 
-@theme inline {
+:root {
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
@@ -205,9 +204,9 @@ body::-webkit-scrollbar-thumb {
 
 @layer base {
   * {
-    @apply border-border outline-ring/50;
   }
-  body {
-    @apply bg-background text-foreground;
+    body {
+      background-color: var(--background);
+      color: var(--foreground);
+    }
   }
-}
