@@ -68,14 +68,14 @@ function Info({ active = true }: SectionProps) {
             <section id="about" className={`page min-h-screen flex flex-col items-center justify-center p-4 md:p-16 transition-all duration-500 ease-in-out ${active ? 'active' : ''}`}>
       <div className={`container mx-auto max-w-6xl transition-all duration-700 delay-100 ease-out ${active ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-8'}`}>
         <h2 className="text-3xl md:text-5xl font-bold text-center mb-12 text-white">ABOUT COSMOCON</h2>
-        <div className="flex flex-col lg:flex-row items-center space-y-8 lg:space-y-0 lg:space-x-12">
+        <div className="flex flex-col items-center space-y-8 lg:space-y-0 lg:space-x-12">
           <div className="w-full lg:w-1/2 about-cosmo-box">
             <div className="text-white">
               <p className="mb-4 text-white/90 text-sm">COSMOCON 2025 is India's largest student-led space carnival by ASTRA, designed to inspire and educate students about space exploration, research, and applications. This flagship event fosters interest in aeronautics, space science, and technology.</p>
               <p className="text-white/90 text-sm">Through hands-on workshops, technical showcases, and cultural events, COSMOCON provides a platform for students to engage with cutting-edge space advancements, interact with ISRO and DRDO experts, and showcase innovation in science and technology.</p>
             </div>
           </div>
-          <div className="w-full lg:w-1/2 grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="w-full grid grid-cols-1 md:grid-cols-4 gap-2">
             <HighlightCard 
               imgSrc={rplImg}
               imgAlt="Rocketry Workshop"
