@@ -23,12 +23,13 @@ function Model() {
 
   const scale = viewport.width < 5 ? 1.2 : 1.7;
   const position = viewport.width < 5 ? [0, 1.2, 0] : [0, -1.0, 0];
-  const tilt = viewport.width <5 ? 0.1 : 0.25;
+  const tilt = viewport.width <5 ? 0.3 : 0.25;
 
   useEffect(() => {
     if (ref.current) {
       ref.current.rotation.x = 0; // Set initial x-rotation to 0
-      ref.current.rotation.y = 0; // Set initial y-rotation to 0
+      ref.current.rotation.y = 0;
+      ref.current.rotation.z = 0; // Set initial y-rotation to 0
     }
   }, [ref]);
 
@@ -117,7 +118,7 @@ const Home = () => {
         </section>
 
 
-        <section className="w-full bg-black mt-10 text-white py-10">
+        <section className="w-full bg-black md:mt-10 text-white md:py-10">
           <div className="w-full">
             <Info active={true} />
           </div>

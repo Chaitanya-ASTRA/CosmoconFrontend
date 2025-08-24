@@ -25,7 +25,7 @@ import { type JSX } from "react";
 function HighlightCard({ icon, imgSrc, imgAlt, title, description, learnMoreLink }: HighlightCardProps): JSX.Element {
   return (
     <div
-      className="p-6 rounded-2xl bg-white/5 backdrop-blur-sm border border-white/10 shadow-xl 
+      className="md:p-6 rounded-2xl bg-white/5 backdrop-blur-sm border border-white/10 shadow-xl 
                  flex flex-col items-start space-y-3 transition-transform duration-300
                  hover:scale-105 hover:-translate-y-2 hover:shadow-2xl
                  perspective-1000"
