@@ -8,9 +8,10 @@ import Info from "./info";
 import Objectives from "./Objectives";
 import Event from "./Events";
 import NavBar from "./NavBar";
+import Logos from "./Logos";
 import astraimg from "./astrafull.png";
 import CountdownTimer from "./CountdownTimer"; // Import the new component
-import Logos from "./Logos";
+// import Logos from "./Logos";
 import { Instagram, Linkedin, Mail} from 'lucide-react'; // Import lucide-react icons
 
 // Removed InteractiveModel component as its logic is now merged into Model.

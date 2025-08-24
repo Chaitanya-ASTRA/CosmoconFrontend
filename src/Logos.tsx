@@ -5,7 +5,7 @@ const Logos = () => {
   return (
     <>
              {/* Vector × ASTRA Logo - Fixed Top Left Corner */}
-       <div className="fixed top-4 left-4 md:left-10 z-51 flex items-center space-x-2 md:space-x-3">
+       <div className="fixed top-4 left-4 md:left-10 z-51 md:flex items-center space-x-2 hidden md:space-x-3">
          <img
            src={VectorImg}
            alt="Vector Logo"

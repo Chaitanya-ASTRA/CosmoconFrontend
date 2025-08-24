@@ -108,7 +108,7 @@ button:focus-visible {
 
 /* Apply to the whole page */
 body {
-  /* scrollbar-width: thin; /* Firefox */
+  scrollbar-width: none; /* Firefox */
   /* scrollbar-color: #fff transparent; /* Firefox */
 }
 
