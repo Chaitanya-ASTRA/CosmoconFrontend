@@ -1,12 +1,12 @@
 import {createBrowserRouter,RouterProvider} from 'react-router-dom'
 import Home from './Home';
-import Info from './info';
 import './App.css'
 import Objectives from './Objectives';
 import Event from './Events';
 import Guest from './Guest';
 import Gallery from './Gallery';
 import Registration from './Registration';
+import { Analytics } from '@vercel/analytics/react';
 
 
 function App() {
@@ -15,10 +15,6 @@ function App() {
     {
       path:'/',
       element:<Home/>
-    },
-    {
-      path:'/about',
-      element:<Info active={true}/>
     },
     {
       path:'/objectives',
@@ -45,6 +41,7 @@ function App() {
     <>
     <main>
       <RouterProvider router={router} />
+      <Analytics />
     </main>
     </>
   )
