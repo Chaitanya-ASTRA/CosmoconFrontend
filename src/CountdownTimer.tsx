@@ -55,7 +55,7 @@ const CountdownTimer: React.FC<CountdownProps> = ({ targetDate }) => {
   });
 
   return (
-    <div className="mt-6 flex space-x-4 md:space-x-6">
+    <div className="mt-6 flex space-x-4 tt-f md:space-x-6">
       {timerComponents.length ? timerComponents : <span className="text-white cosmo-text text-3xl md:text-4xl font-mono">Event Started!</span>}
     </div>
   );

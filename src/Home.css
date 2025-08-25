@@ -55,7 +55,12 @@ html, body, #root {
   text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
   animation: fadeIn 3s ease-in-out forwards;
 }
-
+.black-hole{
+  animation: fadeIn 3s ease-in-out forwards;
+}
+.tt-f{
+  animation:fadeIn 4s ease-in-out forwards;
+}
 /* Year text - centered below COSMOCON */
 .cosmo-text.year {
   font-size: 6vw;   /* smaller than COSMOCON */
