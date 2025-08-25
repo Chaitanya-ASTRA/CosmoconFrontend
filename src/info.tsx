@@ -3,28 +3,134 @@ import dartImg from './dart.png';
 import rplImg from './rpl.png';
 import satelliteImg from './satellite.png';
 
-interface HighlightCardProps {
-  icon?: string;
-  imgSrc?: string;
-  imgAlt?: string;
-  title: string;
-  description: string;
-  learnMoreLink: string;
-}
 
 interface SectionProps {
   active: boolean;
 }
 
 
-import { type JSX } from "react";
 
 
+
+
+
+import { useRef, type JSX } from "react";
+
+interface HighlightCardProps {
+  icon?: string;
+  imgSrc?: string;
+  imgAlt?: string;
+  title: string;
+  description: string;
+  learnMoreLink?: string;
+}
+
+function useTilt(max = 16) {
+  const ref = useRef<HTMLDivElement>(null);
+
+  function onMove(e: React.MouseEvent) {
+    const el = ref.current;
+    if (!el) return;
+    const rect = el.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    const px = (x / rect.width) * 2 - 1; // -1..1
+    const py = (y / rect.height) * 2 - 1; // -1..1
+    const rx = (-py * max).toFixed(2);
+    const ry = (px * max).toFixed(2);
+    el.style.transform = `perspective(900px) rotateX(${rx}deg) rotateY(${ry}deg)`;
+  }
+
+  function onLeave() {
+    const el = ref.current;
+    if (!el) return;
+    el.style.transform = `perspective(900px) rotateX(0deg) rotateY(0deg)`;
+  }
+
+  return { ref, onMove, onLeave };
+}
+
+// function HighlightCard({
+//   icon,
+//   imgSrc,
+//   imgAlt,
+//   title,
+//   description,
+//   learnMoreLink,
+// }: HighlightCardProps) {
+//   const { ref, onMove, onLeave } = useTilt();
+
+//   return (
+//     <div
+//       ref={ref}
+//       onMouseMove={onMove}
+//       onMouseLeave={onLeave}
+//       className="group relative rounded-2xl p-[1px]
+//                  bg-gradient-to-br from-white/20 to-white/5
+//                  shadow-[0_0_40px_-10px_rgba(255,255,255,0.5)]
+//                  transition-transform duration-200"
+//     >
+//       {/* Card inner */}
+//       <div className="relative rounded-2xl bg-black overflow-hidden border border-white/20">
+//         {/* subtle stars effect */}
+//         <div
+//           className="absolute inset-0 opacity-30"
+//           style={{
+//             background:
+//               "radial-gradient(1px 1px at 10% 20%, #fff 50%, transparent 51%)," +
+//               "radial-gradient(1px 1px at 70% 30%, #fff 50%, transparent 51%)," +
+//               "radial-gradient(1px 1px at 30% 80%, #fff 50%, transparent 51%)," +
+//               "radial-gradient(1px 1px at 90% 60%, #fff 50%, transparent 51%)",
+//             backgroundSize: "auto",
+//             mixBlendMode: "screen",
+//           }}
+//         />
+
+//         {/* content */}
+//         <div className="relative z-10 p-6 flex flex-col h-full justify-between">
+//           <div>
+//             <div className="w-16 h-16 flex items-center justify-center mb-4 rounded-xl bg-white/5 border border-white/20">
+//               {imgSrc ? (
+//                 <img
+//                   src={imgSrc}
+//                   alt={imgAlt}
+//                   className="w-14 h-14 object-contain"
+//                 />
+//               ) : (
+//                 <span className="text-4xl text-white">{icon}</span>
+//               )}
+//             </div>
+//             <h4 className="text-xl font-semibold text-white">{title}</h4>
+//             <p className="text-sm text-white/70 mt-2">{description}</p>
+//           </div>
+
+//           {learnMoreLink && (
+//             <a
+//               href={learnMoreLink}
+//               target="_blank"
+//               rel="noopener noreferrer"
+//               className="mt-6 text-sm font-medium px-4 py-2 rounded-lg self-start
+//                          bg-white text-black
+//                          hover:bg-black hover:text-white border border-white
+//                          transition-all duration-200"
+//             >
+//               Learn More
+//             </a>
+//           )}
+//         </div>
+//       </div>
+//     </div>
+//   );
+// }
 
 
 function HighlightCard({ icon, imgSrc, imgAlt, title, description, learnMoreLink }: HighlightCardProps): JSX.Element {
+  const { ref, onMove, onLeave } = useTilt();
   return (
     <div
+    ref={ref}
+    onMouseMove={onMove}
+    onMouseLeave={onLeave}
       className="md:p-6 rounded-2xl bg-white/5 backdrop-blur-sm border border-white/10 shadow-xl 
                  flex flex-col items-start space-y-3 transition-transform duration-300
                  hover:scale-105 hover:-translate-y-2 hover:shadow-2xl
