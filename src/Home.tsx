@@ -24,13 +24,15 @@ function Model() {
 
   const scale = viewport.width < 5 ? 1.2 : 1.7;
   const position = viewport.width < 5 ? [0, 1.2, 0] : [0, -1.0, 0];
-  const tilt = viewport.width <5 ? 0.3 : 0.25;
+  const tilt = viewport.width <5 ? 0.3 : 0.12;
+  const value = viewport.width <5 ? 0.2:-0.12
 
   useEffect(() => {
     if (ref.current) {
-      ref.current.rotation.x = 0; // Set initial x-rotation to 0
+      ref.current.rotation.x = value; // Set initial x-rotation to 0
       ref.current.rotation.y = 0;
-      ref.current.rotation.z = 0; // Set initial y-rotation to 0
+      ref.current.rotation.z = -0.01;
+       // Set initial y-rotation to 0
     }
   }, [ref]);
 
