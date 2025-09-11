@@ -24,15 +24,13 @@ function Model() {
 
   const scale = viewport.width < 5 ? 1.2 : 1.7;
   const position = viewport.width < 5 ? [0, 1.2, 0] : [0, -1.0, 0];
-  const tilt = viewport.width <5 ? 0.3 : 0.12;
-  const value = viewport.width <5 ? 0.13:-0.12
+  const tilt = viewport.width <5 ? 0.3 : 0.25;
 
   useEffect(() => {
     if (ref.current) {
-      ref.current.rotation.x = value; // Set initial x-rotation to 0
+      ref.current.rotation.x = 0; // Set initial x-rotation to 0
       ref.current.rotation.y = 0;
-      ref.current.rotation.z = -0.01;
-       // Set initial y-rotation to 0
+      ref.current.rotation.z = 0; // Set initial y-rotation to 0
     }
   }, [ref]);
 
@@ -93,7 +91,6 @@ const Home = () => {
               gl.setClearColor("#000000", 0);
             }}
             eventSource={document.body} // Re-added this for robust event capturing
-            className='black-hole'
           >
             <ambientLight intensity={0.5} />
             <directionalLight position={[5, 5, 5]} intensity={1} />
@@ -110,7 +107,7 @@ const Home = () => {
                   href="https://cosmocon2025.fillout.com/register"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-6 py-3 tt-f bg-amber-500 hover:bg-amber-400 text-black font-bold text-base md:text-lg rounded-lg transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:shadow-amber-300/50"
+                  className="px-6 py-3  bg-amber-500 hover:bg-amber-400 text-black font-bold text-base md:text-lg rounded-lg transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:shadow-amber-300/50"
                 >
                   Click Here To Register
                 </a>
@@ -156,7 +153,7 @@ const Home = () => {
             <div className='flex flex-col md:w-1/3 items-center text-center'> 
             <h2 className="text-xl font-semibold mb-4">Address</h2>
              <div className="flex flex-col items-center  space-y-4">
-            <h2>Gandipet, Hyderabad, Telangana,</h2>
+            <h2>CBIT, Gandipet, Hyderabad, Telangana,</h2>
             <h2>PIN : 500075</h2>
             <h2>Mobile : 9949375526 </h2>
             </div>
