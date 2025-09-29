@@ -13,7 +13,7 @@ function Event() {
   const [active] = useState(true);
 
   const timelineEvents: TimelineEvent[] = [
-    { time: 'Day 1', title: 'Inauguration & Immersion', details: ['Grand Opening Ceremony with VIP dignitaries.','Keynote addresses from leading scientists.','Workshop Kickoff: Rocketry, CubeSat Hackathon, Rover & Robotic Arm.','Non-technical competitions.'] },
+    { time: 'Day 1', title: 'Inauguration & Immersion', details: ['Grand Opening Ceremony with VIP dignitaries.','Keynote addresses from leading scientists.','Workshop Kickoff: Rocketry, CubeSat Workshop, Rover & Robotic Arm.','Non-technical competitions.'] },
     { time: 'Day 2', title: 'Workshop Deep-Dives & Cultural Engagement', details: ['Technical workshops continue','Cultural Evening with DJ and student performances.'] },
     { time: 'Day 3', title: 'Showcase, Competitions & Closing', details: ['Common Space Tech Expo \n','Awards, networking, and closing ceremony.'] },
   ];

@@ -62,15 +62,9 @@ function Model() {
 }
 
 const Home = () => {
-  const [showText, setShowText] = useState(false);
+  const [showText] = useState(true);
 
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setShowText(true);
-    }, 2000);
-    return () => clearTimeout(timer);
-  }, []);
-
+  
   return (
     <div id="home"> {/* Added id="home" for navigation */}
       {showText && (<>
@@ -82,6 +76,7 @@ const Home = () => {
       <div className="w-full">
         {/* First Page (Canvas Section) */}
         <section className="relative h-screen w-full">
+          
           <Canvas
             style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%", zIndex: 10, pointerEvents: "auto" }}
             dpr={Math.min(window.devicePixelRatio, 2)}
@@ -102,6 +97,8 @@ const Home = () => {
             <div className="absolute inset-0 flex flex-col justify-center items-center z-20 pointer-events-none">
               <h1 className="cosmo-text">COSMOCON</h1>
               <h1 className="cosmo-text year">2025</h1>
+              <h2 className='cosmo-deadline'>Registration Deadline Extended to 2nd October</h2>
+              
               <div className="z-40 md:block mt-4 pointer-events-auto">
                 <a
                   href="https://cosmocon2025.fillout.com/register"

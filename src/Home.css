@@ -68,10 +68,20 @@ html, body, #root {
   margin-top: 1vw;  /* move down by a few pixels */
   text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
 }
-
+.cosmo-deadline{
+  font-size: 2vw;
+  align-self: center;
+  color: red;
+  margin-top: 1vw;
+  text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+  animation: fadeIn 1s ease-in-out forwards;
+}
 @media (max-width: 768px) {
   .cosmo-text {
     margin-top: 190px;
+  }
+  .cosmo-deadline{
+    font-size: 4vw;
   }
 }
 
