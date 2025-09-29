@@ -2,6 +2,7 @@
 import dartImg from './dart.png';
 import rplImg from './rpl.png';
 import satelliteImg from './satellite.png';
+import vector from './vector.png';
 
 
 interface SectionProps {
@@ -181,7 +182,7 @@ function Info({ active = true }: SectionProps) {
               <p className="text-white/90 text-sm md:text-lg">Through hands-on workshops, technical showcases, and cultural events, COSMOCON provides a platform for students to engage with cutting-edge space advancements, interact with ISRO and DRDO experts, and showcase innovation in science and technology.</p>
             </div>
           </div>
-          <div className="w-full grid grid-cols-1 md:grid-cols-4 gap-2">
+          <div className="w-full grid grid-cols-1 md:grid-cols-5 gap-2">
             <HighlightCard 
               imgSrc={rplImg}
               imgAlt="Rocketry Workshop"
@@ -203,10 +204,17 @@ function Info({ active = true }: SectionProps) {
               description="Assemble and program rovers and robotic arms" 
               learnMoreLink="https://drive.google.com/file/d/1PXH98u2nG2zqoNX2nd8fNNoo1N1jsXWm/view?usp=sharing"
             />
+                        <HighlightCard 
+              imgSrc={vector}
+              imgAlt="ProjExpo"
+              title="Technical Project Expo" 
+              description="Showcase your amazing projects and win prizes" 
+              learnMoreLink="https://drive.google.com/file/d/1PXH98u2nG2zqoNX2nd8fNNoo1N1jsXWm/view?usp=sharing "
+            />
             <HighlightCard 
               icon="🎭" 
               title="Cultural Evening" 
-              description="Music performances by Chaitanya Geethi & Vaadya" 
+              description="An Evening full of Live Music, Dance and More" 
               learnMoreLink=""
             />
           </div>
