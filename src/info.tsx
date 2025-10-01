@@ -192,8 +192,8 @@ function Info({ active = true }: SectionProps) {
             />
             <HighlightCard 
               imgSrc={satelliteImg}
-              imgAlt="CubeSat Hackathon"
-              title="CubeSat Hackathon" 
+              imgAlt="CubeSat WorkShop"
+              title="CubeSat WorkShop" 
               description="Build satellite prototypes with real-time data acquisition" 
               learnMoreLink="https://drive.google.com/file/d/183b45f0esOYrmQFdL83vEHTxoTUmPiD9/view?usp=sharing"
             />
