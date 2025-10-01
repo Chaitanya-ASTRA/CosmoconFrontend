@@ -13,6 +13,7 @@ import astraimg from "./astrafull.png";
 import CountdownTimer from "./CountdownTimer"; // Import the new component
 // import Logos from "./Logos";
 import { Instagram, Linkedin, Mail} from 'lucide-react'; // Import lucide-react icons
+import Guest from './Guest';
 
 // Removed InteractiveModel component as its logic is now merged into Model.
 
@@ -122,7 +123,13 @@ const Home = () => {
           </div>
         </section>
 
-        <section className="w-full bg-[#0B0F1A] text-white py-10">
+         <section className="w-full bg-[#0B0F1A] text-white">
+          <div className="w-full">
+            <Guest/>
+          </div>
+        </section>
+
+        <section className="w-full bg-[#0B0F1A] text-white">
           <div className="w-full">
             <Objectives />
           </div>
