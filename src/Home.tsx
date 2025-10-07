@@ -98,7 +98,7 @@ const Home = () => {
             <div className="absolute inset-0 flex flex-col justify-center items-center z-20 pointer-events-none">
               <h1 className="cosmo-text">COSMOCON</h1>
               <h1 className="cosmo-text year">2025</h1>
-              <h2 className='cosmo-deadline'>Registration Deadline Extended to 2nd October</h2>
+              <h2 className='cosmo-deadline'>Registrations Are Closing Soon</h2>
               
               <div className="z-40 md:block mt-4 pointer-events-auto">
                 <a
