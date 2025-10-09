@@ -101,6 +101,7 @@ const Home = () => {
               <div className='flex md:flex-row flex-col justify-center items-center md:space-y-0 md:space-x-5 space-y-4'>
                 <div className="z-40 md:block mt-4 pointer-events-auto md:w-[300px]">
                 <a
+                href = "https://www.canva.com/design/DAG1RGDRVN4/FHla5JQ-5vtW6V8o0RWyYw/edit?utm_content=DAG1RGDRVN4&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="px-6 py-3 bg-amber-500 hover:bg-amber-400 text-black font-bold text-base md:text-lg rounded-lg transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:shadow-amber-300/50"
