@@ -22,7 +22,7 @@ const Logos = () => {
              {/* CBIT Logo - Hidden on mobile, visible on desktop */}
        <div className="hidden md:block absolute top-4 right-10 z-51">
         <img
-          src="https://upload.wikimedia.org/wikipedia/en/6/68/Chaitanya_Bharathi_Institute_of_Technology_logo.png"
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTeMzFjgohgMpXYzZIoWl2zQC-zyTvUD2cbFA&s"
           alt="CBIT Logo"
           className="h-12 w-auto object-contain md:h-16"
         />

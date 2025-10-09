@@ -209,7 +209,7 @@ function Info({ active = true }: SectionProps) {
               imgAlt="ProjExpo"
               title="Technical Project Expo" 
               description="Showcase your amazing projects and win prizes" 
-              learnMoreLink="https://drive.google.com/file/d/1PXH98u2nG2zqoNX2nd8fNNoo1N1jsXWm/view?usp=sharing "
+              learnMoreLink="https://drive.google.com/file/d/18VG9iOBSibgc-PZT3SZJocfofkqZwWMm/view?usp=drivesdk "
             />
             <HighlightCard 
               icon="🎭" 

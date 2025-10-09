@@ -98,19 +98,29 @@ const Home = () => {
             <div className="absolute inset-0 flex flex-col justify-center items-center z-20 pointer-events-none">
               <h1 className="cosmo-text">COSMOCON</h1>
               <h1 className="cosmo-text year">2025</h1>
-              <h2 className='cosmo-deadline'>Registrations Are Closing Soon</h2>
               
-              <div className="z-40 md:block mt-4 pointer-events-auto">
+              <div className='flex md:flex-row flex-col justify-center items-center md:space-y-0 md:space-x-10 space-y-4'>
+                <div className="z-40 md:block mt-4 pointer-events-auto md:w-[500px]">
                 <a
-                  href="https://cosmocon2025.fillout.com/register"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-6 py-3 bg-amber-500 hover:bg-amber-400 text-black font-bold text-base md:text-lg rounded-lg transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:shadow-amber-300/50"
+                >
+                  Event Guide
+                </a>
+              </div>
+              <div className="z-40 md:block mt-4 pointer-events-auto md:w-[500px]">
+                <a
                   target="_blank"
                   rel="noopener noreferrer"
                   className="px-6 py-3  bg-amber-500 hover:bg-amber-400 text-black font-bold text-base md:text-lg rounded-lg transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:shadow-amber-300/50"
                 >
-                  Click Here To Register
+                  Location Guide
                 </a>
               </div>
-              <CountdownTimer targetDate="2025-10-09T00:00:00" />
+              </div>
+              
+              
             </div>
           )}
 

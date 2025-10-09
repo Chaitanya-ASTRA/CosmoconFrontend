@@ -20,7 +20,6 @@ const NavBar = () => {
           <a href="#home" className="text-white hover:text-white hover:bg-white/20 px-2 py-2 rounded-md transition-all duration-300 font-semibold text-xl">Home</a>
           <a href="#about"  className="text-white hover:text-white hover:bg-white/20 px-2 py-2 rounded-md transition-all duration-300 font-semibold text-xl">About</a>
           <a href="#guests"  className="text-white hover:text-white hover:bg-white/20 px-2 py-2 rounded-md transition-all duration-300 font-semibold text-xl">Guests</a>
-          <a href="#objectives"  className="text-white hover:text-white hover:bg-white/20 px-2 py-2 rounded-md transition-all duration-300 font-semibold text-xl">Objectives</a>
           <a href="#events"  className="text-white hover:text-white hover:bg-white/20 px-2 py-2 rounded-md transition-all duration-300 font-semibold text-xl">Events</a>
         </div>
 
@@ -50,7 +49,6 @@ const NavBar = () => {
           <a href="#home" onClick={()=>setOpen(false)}  className="block text-white hover:text-white hover:bg-white/10 px-0 py-0 rounded-md transition-all duration-300 font-semibold text-xl">Home</a>
           <a href="#about" onClick={()=>setOpen(false)} className="block text-white hover:text-white hover:bg-white/10 px-0 py-0 rounded-md transition-all duration-300 font-semibold text-xl">About</a>
           <a href="#guests" onClick={()=>setOpen(false)} className="block text-white hover:text-white hover:bg-white/10 px-0 py-0 rounded-md transition-all duration-300 font-semibold text-xl">Guests</a>
-          <a href="#objectives" onClick={()=>setOpen(false)} className="block text-white hover:text-white hover:bg-white/10 px-0 py-0 rounded-md transition-all duration-300 font-semibold text-xl">Objectives</a>
           <a href="#events" onClick={()=>setOpen(false)} className="block text-white hover:text-white hover:bg-white/10 px-0 py-0 rounded-md transition-all duration-300 font-semibold text-xl">Events</a>
         </div>
       )}

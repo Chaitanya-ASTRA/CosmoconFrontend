@@ -1,6 +1,5 @@
 
 import { Instagram, Linkedin, Mail } from 'lucide-react';
-import CBITLogo from "https://image-static.collegedunia.com/public/image/01-22:18-Chaitany-Bharathi_Institute_of_Technology_logo.png"; // Using CBIT logo as the footer logo
 
 const Footer = () => {
   return (
@@ -8,7 +7,7 @@ const Footer = () => {
       {/* Logo Section - Bottom Left */}
       <div className="flex flex-col items-center md:items-start">
         <img
-          src={CBITLogo}
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTeMzFjgohgMpXYzZIoWl2zQC-zyTvUD2cbFA&s"
           alt="Footer Logo"
           className="h-20 w-auto object-contain mb-4"
         />
