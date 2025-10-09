@@ -10,7 +10,6 @@ import Event from "./Events";
 import NavBar from "./NavBar";
 import Logos from "./Logos";
 import astraimg from "./astrafull.png";
-import CountdownTimer from "./CountdownTimer"; // Import the new component
 // import Logos from "./Logos";
 import { Instagram, Linkedin, Mail} from 'lucide-react'; // Import lucide-react icons
 import Guest from './Guest';
