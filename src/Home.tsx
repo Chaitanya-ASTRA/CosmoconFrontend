@@ -98,8 +98,8 @@ const Home = () => {
               <h1 className="cosmo-text">COSMOCON</h1>
               <h1 className="cosmo-text year">2025</h1>
               
-              <div className='flex md:flex-row flex-col justify-center items-center md:space-y-0 md:space-x-10 space-y-4'>
-                <div className="z-40 md:block mt-4 pointer-events-auto md:w-[500px]">
+              <div className='flex md:flex-row flex-col justify-center items-center md:space-y-0 md:space-x-5 space-y-4'>
+                <div className="z-40 md:block mt-4 pointer-events-auto md:w-[300px]">
                 <a
                   target="_blank"
                   rel="noopener noreferrer"
@@ -108,7 +108,17 @@ const Home = () => {
                   Event Guide
                 </a>
               </div>
-              <div className="z-40 md:block mt-4 pointer-events-auto md:w-[500px]">
+              <div className="z-40 md:block mt-4 pointer-events-auto md:w-[300px]">
+                <a
+                href="https://cosmocon2025.fillout.com/register"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-6 py-3  bg-amber-500 hover:bg-amber-400 text-black font-bold text-base md:text-lg rounded-lg transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:shadow-amber-300/50"
+                >
+                  Register now
+                </a>
+              </div>
+              <div className="z-40 md:block mt-4 pointer-events-auto md:w-[300px]">
                 <a
                   target="_blank"
                   rel="noopener noreferrer"
